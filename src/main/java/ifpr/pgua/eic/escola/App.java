@@ -8,10 +8,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import ifpr.pgua.eic.escola.utils.BaseAppNavigator;
+
 /**
  * JavaFX App
  */
-public class App extends Application {
+public class App extends BaseAppNavigator {
 
     public static void main(String[] args) {
         launch();
