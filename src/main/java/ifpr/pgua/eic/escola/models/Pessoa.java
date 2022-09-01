@@ -2,10 +2,10 @@ package ifpr.pgua.eic.escola.models;
 
 public class Pessoa {
 
-    private String cpf;
-    private String nome;
-    private String email;
-    private String telefone;
+    protected String cpf;
+    protected String nome;
+    protected String email;
+    protected String telefone;
 
     public Pessoa(String cpf, String nome, String email, String telefone) {
         this.cpf = cpf;
