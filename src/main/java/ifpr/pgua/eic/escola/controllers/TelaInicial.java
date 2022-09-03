@@ -1,5 +1,5 @@
 package ifpr.pgua.eic.escola.controllers;
 
-public class controllerTela1 {
+public class TelaInicial {
 
 }

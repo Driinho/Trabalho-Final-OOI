@@ -7,7 +7,6 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
@@ -50,7 +49,6 @@ public abstract class BaseAppNavigator extends Application {
 
         atualizaEstilo();
 
-        this.palco.getIcons().add(new Image(getClass().getResourceAsStream("imagens/poke-icon.png")));
         this.palco.setScene(cena);
         this.palco.setTitle(getAppTitle());
         this.palco.show();
