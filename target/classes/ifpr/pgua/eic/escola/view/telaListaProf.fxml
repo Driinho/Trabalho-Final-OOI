@@ -11,16 +11,15 @@
 
 <VBox xmlns="http://javafx.com/javafx" 
       xmlns:fx="http://javafx.com/fxml" 
-      prefHeight="height" prefWidth="width"
-      fx:controller="ifpr.pgua.eic.controllers.TelaListaProf"
+      fx:controller="ifpr.pgua.eic.escola.controllers.TelaListaProf"
       >
 
     <padding>
           <Insets topRightBottomLeft="20.0"/>
     </padding>
 
-    <VBox spacing="5.0">
-        <HBox spacing="5.0">
+    <VBox>
+        <HBox >
                 <TextField />
                 <Button text="Buscar"/>
         </HBox>

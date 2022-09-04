@@ -13,6 +13,11 @@ public class TelaPrincipalProf {
     }
 
     @FXML
+    private void mudarTelaLista(ActionEvent event) {
+        App.changeScreenRegion("LISTA_PROF", BorderPaneRegion.CENTER);
+    }
+
+    @FXML
     private void mudarTelaInicial(ActionEvent event) {
         App.popScreen();
     }
