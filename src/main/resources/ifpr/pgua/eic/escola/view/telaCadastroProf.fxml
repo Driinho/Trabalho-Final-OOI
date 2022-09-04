@@ -18,7 +18,20 @@
         <Insets topRightBottomLeft="20.0"/>
     </padding>
 
-    <HBox>
-        <Button text="TESTE"/>
-    </HBox>
+    <VBox>
+        <Label text="Nome: " />
+        <TextField />
+        <Label text="Cpf: " />
+        <TextField />
+        <Label text="Email: " />
+        <TextField />
+        <Label text="Telefone: " />
+        <TextField />
+        <Label text="Salário: " />
+        <TextField />
+        <HBox spacing="10">
+            <Button text="Cadastrar" />
+            <Button text="Limpar" />
+        </HBox>
+    </VBox>
 </VBox>

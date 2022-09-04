@@ -2,6 +2,7 @@ package ifpr.pgua.eic.escola;
 
 import ifpr.pgua.eic.escola.controllers.TelaCadastroProf;
 import ifpr.pgua.eic.escola.controllers.TelaInicial;
+import ifpr.pgua.eic.escola.controllers.TelaListaProf;
 import ifpr.pgua.eic.escola.controllers.TelaPrincipalProf;
 import ifpr.pgua.eic.escola.utils.BaseAppNavigator;
 import ifpr.pgua.eic.escola.utils.ScreenRegistryFXML;
@@ -34,6 +35,8 @@ public class App extends BaseAppNavigator {
                 new ScreenRegistryFXML(App.class, "view/telaPrincipalProf.fxml", o -> new TelaPrincipalProf()));
         registraTela("CADASTRO_PROF",
                 new ScreenRegistryFXML(App.class, "view/telaCadastroProf.fxml", o -> new TelaCadastroProf()));
+        registraTela("LISTA_PROF",
+                new ScreenRegistryFXML(App.class, "view/telaListaProf.fxml", o -> new TelaListaProf()));
     }
 
     @Override
