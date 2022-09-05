@@ -18,6 +18,18 @@ public class Escola {
         professores = new ArrayList<>();
         alunos = new ArrayList<>();
         cursos = new ArrayList<>();
+
+        criaFakes();
+    }
+
+    public void criaFakes() {
+        cadastrarAluno("111-111", "Pedro", "pedro@gmail.com", "111-111", LocalDate.now());
+        cadastrarAluno("-222", "Gustavo", "gustavo@gmail.com", "222-222", LocalDate.now());
+        cadastrarAluno("333-333", "Andre", "andre@gmail.com", "333-333", LocalDate.now());
+
+        cadastrarProfessor("444-444", "Jonas", "jonas@gmail.com", "444-444", 1200);
+        cadastrarProfessor("555-555", "Alberto", "alberto@gmail.com", "555-555", 1200);
+        cadastrarProfessor("666-666", "Rodrigo", "rodrigo@gmail.com", "666-666", 1200);
     }
 
     public boolean cadastrarAluno(String cpf, String nome, String email, String telefone, LocalDate dataMatricula) {
