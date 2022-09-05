@@ -27,8 +27,6 @@
         <TextField fx:id="campoEmail" />
         <Label text="Telefone: " />
         <TextField fx:id="campoTelefone" />
-        <Label text="Data de Matricula: " />
-        <DatePicker fx:id="campoDataMatricula" />
         <HBox spacing="10">
             <Button text="Cadastrar" onAction="#cadastrar"/>
             <Button text="Limpar" onAction="#clear" />
