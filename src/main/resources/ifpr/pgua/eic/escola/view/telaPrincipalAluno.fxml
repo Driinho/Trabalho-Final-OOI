@@ -11,19 +11,20 @@
 <BorderPane xmlns="http://javafx.com/javafx" 
       xmlns:fx="http://javafx.com/fxml" 
       prefHeight="600" prefWidth="800"
-      fx:controller="ifpr.pgua.eic.escola.controllers.TelaPrincipalProf"
+      fx:controller="ifpr.pgua.eic.escola.controllers.TelaPrincipalAluno"
       >
 
     <left>
         <VBox alignment="center">
-            <Button text="Cadastrar" onAction="#mudarTelaCadastro"/>
-            <Button text="Listar" onAction="#mudarTelaLista"/>
-            <Button text="Voltar" onAction="#mudarTelaInicial"/>
+            <Button text="Cadastro" onAction="#mudarTelaCadastro"/>
+            <Button text="Lista" onAction="#mudarTelaLista"/>
+            <Button text="Voltar" onAction="#mudarTelaInicio"/>
         </VBox>
     </left>
+
     <top>
         <HBox alignment="center">
-            <Label text="Professor" />
+            <Label text="Aluno" />
         </HBox>
     </top>
 

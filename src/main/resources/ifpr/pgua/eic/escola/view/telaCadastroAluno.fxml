@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+
+<VBox xmlns="http://javafx.com/javafx" 
+      xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="ifpr.pgua.eic.escola.controllers.TelaCadastroAluno"
+      >
+  
+    <padding>
+        <Insets topRightBottomLeft="20.0"/>
+    </padding>
+
+    <VBox>
+        <Label text="Nome: " />
+        <TextField />
+        <Label text="Cpf: " />
+        <TextField />
+        <Label text="Email: " />
+        <TextField />
+        <Label text="Telefone: " />
+        <TextField />
+        <Label text="Data de Matricula: " />
+        <TextField />
+        <HBox spacing="10">
+            <Button text="Cadastrar" />
+            <Button text="Limpar" />
+        </HBox>
+    </VBox>
+</VBox>

@@ -10,4 +10,9 @@ public class TelaInicial {
     private void mudarTelaProf(ActionEvent event) {
         App.pushScreen("PRINCIPAL_PROF");
     }
+
+    @FXML
+    private void mudarTelaAluno(ActionEvent event) {
+        App.pushScreen("PRINCIPAL_ALUNO");
+    }
 }

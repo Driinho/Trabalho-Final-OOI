@@ -23,9 +23,9 @@
         <Label text="Escola" />
 
         <HBox alignment="center" spacing="10">
-            <Button text="Professores" onAction="#mudarTelaProf"/>
+            <Button text="Professores" onAction="#mudarTelaProf" />
             <Button text="Cursos"/>
-            <Button text="Alunos"/>
+            <Button text="Alunos" onAction="#mudarTelaAluno" />
         </HBox>
     
 </VBox>

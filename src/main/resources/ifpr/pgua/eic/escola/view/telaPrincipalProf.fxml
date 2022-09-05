@@ -21,5 +21,10 @@
             <Button text="Voltar" onAction="#mudarTelaInicial"/>
         </VBox>
     </left>
+    <top>
+        <HBox alignment="center">
+            <Label text="Professor" />
+        </HBox>
+    </top>
 
 </BorderPane>
