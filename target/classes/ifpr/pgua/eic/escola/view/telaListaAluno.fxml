@@ -23,11 +23,11 @@
             <TextField />
             <Button text="Buscar"/>
         </HBox>
-        <ListView />
+        <ListView fx:id="ltvAluno" onMouseClicked="#mostrarDetalhes"/>
     </VBox>
 
     <VBox >
-        <TextArea  editable="false"/>
+        <TextArea fx:id="taDetalhes" editable="false"/>
     </VBox>
 
 </VBox>

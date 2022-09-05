@@ -48,9 +48,9 @@ public class App extends BaseAppNavigator {
         registraTela("PRINCIPAL_ALUNO",
                 new ScreenRegistryFXML(App.class, "view/telaPrincipalAluno.fxml", o -> new TelaPrincipalAluno()));
         registraTela("CADASTRO_ALUNO",
-                new ScreenRegistryFXML(App.class, "view/telaCadastroAluno.fxml", o -> new TelaCadastroAluno()));
+                new ScreenRegistryFXML(App.class, "view/telaCadastroAluno.fxml", o -> new TelaCadastroAluno(escola)));
         registraTela("LISTA_ALUNO",
-                new ScreenRegistryFXML(App.class, "view/telaListaAluno.fxml", o -> new TelaListaAluno()));
+                new ScreenRegistryFXML(App.class, "view/telaListaAluno.fxml", o -> new TelaListaAluno(escola)));
     }
 
     @Override
