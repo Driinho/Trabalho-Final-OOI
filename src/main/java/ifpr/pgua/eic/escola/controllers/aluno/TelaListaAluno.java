@@ -9,11 +9,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 public class TelaListaAluno implements Initializable {
 
     private Escola escola;
+
+    @FXML
+    private TextField campoFiltro;
 
     @FXML
     private ListView<Aluno> ltvAluno;
@@ -28,7 +32,17 @@ public class TelaListaAluno implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         ltvAluno.getItems().clear();
-        ltvAluno.getItems().addAll(escola.getAlunos());
+        ltvAluno.getItems().addAll(escola.listarAlunos());
+    }
+
+    @FXML
+    private void buscarAluno() {
+        String filtro = campoFiltro.getText();
+        Aluno aluno = escola.buscarAlunoCpf(filtro);
+        ltvAluno.getItems().clear();
+        if(aluno != null) {
+            ltvAluno.getItems().add(aluno);
+        }
     }
 
     @FXML

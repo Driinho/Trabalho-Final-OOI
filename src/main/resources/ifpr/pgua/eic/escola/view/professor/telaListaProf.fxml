@@ -20,8 +20,8 @@
 
     <VBox>
         <HBox >
-            <TextField />
-            <Button text="Buscar"/>
+            <TextField fx:id="campoFiltro" promptText="Digite o CPF..."/>
+            <Button text="Buscar" onAction="#buscarProf" />
         </HBox>
         <ListView fx:id="ltvProf" onMouseClicked="#mostrarDetalhes" />
     </VBox>

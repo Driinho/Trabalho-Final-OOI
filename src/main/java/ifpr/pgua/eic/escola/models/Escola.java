@@ -53,15 +53,15 @@ public class Escola {
     }
 
     public ArrayList<Aluno> listarAlunos() {
-        return getAlunos();
+        return alunos;
     }
 
     public ArrayList<Professor> listarProfessores() {
-        return getProfessores();
+        return professores;
     }
 
     public ArrayList<Curso> listarCursos() {
-        return getCursos();
+        return cursos;
     }
 
     public ArrayList<Aluno> listarAlunosMatriculados(Curso curso) {
@@ -69,10 +69,20 @@ public class Escola {
     }
 
     public Aluno buscarAlunoCpf(String cpf) {
+        for(Aluno alunoAtual : alunos) {
+            if(alunoAtual.getCpf().equals(cpf)) {
+                return alunoAtual;
+            }
+        }
         return null;
     }
 
     public Professor buscarProfessorCpf(String cpf) {
+        for(Professor professorAtual : professores) {
+            if(professorAtual.getCpf().equals(cpf)) {
+                return professorAtual;
+            }
+        }
         return null;
     }
 
@@ -96,24 +106,12 @@ public class Escola {
         this.telefone = telefone;
     }
 
-    public ArrayList<Professor> getProfessores() {
-        return professores;
-    }
-
     public void setProfessores(ArrayList<Professor> professores) {
         this.professores = professores;
     }
 
-    public ArrayList<Aluno> getAlunos() {
-        return alunos;
-    }
-
     public void setAlunos(ArrayList<Aluno> alunos) {
         this.alunos = alunos;
-    }
-
-    public ArrayList<Curso> getCursos() {
-        return cursos;
     }
 
     public void setCursos(ArrayList<Curso> cursos) {
