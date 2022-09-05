@@ -20,18 +20,18 @@
 
     <VBox>
         <Label text="Nome: " />
-        <TextField />
+        <TextField fx:id="campoNome" />
         <Label text="Cpf: " />
-        <TextField />
+        <TextField fx:id="campoCpf" />
         <Label text="Email: " />
-        <TextField />
+        <TextField fx:id="campoEmail" />
         <Label text="Telefone: " />
-        <TextField />
+        <TextField fx:id="campoTelefone" />
         <Label text="Salário: " />
-        <TextField />
+        <TextField fx:id="campoSalario" />
         <HBox spacing="10">
-            <Button text="Cadastrar" />
-            <Button text="Limpar" />
+            <Button text="Cadastrar" onAction="#cadastrar"/>
+            <Button text="Limpar" onAction="#clear"/>
         </HBox>
     </VBox>
 </VBox>

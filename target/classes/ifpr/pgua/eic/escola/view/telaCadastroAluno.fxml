@@ -28,7 +28,7 @@
         <Label text="Telefone: " />
         <TextField />
         <Label text="Data de Matricula: " />
-        <TextField />
+        <DatePicker />
         <HBox spacing="10">
             <Button text="Cadastrar" />
             <Button text="Limpar" />

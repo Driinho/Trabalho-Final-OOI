@@ -46,4 +46,9 @@ public class Pessoa {
         this.telefone = telefone;
     }
 
+    @Override
+    public String toString() {
+        return nome;
+    }
+
 }
