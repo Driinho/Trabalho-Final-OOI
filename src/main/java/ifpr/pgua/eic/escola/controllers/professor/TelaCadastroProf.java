@@ -1,4 +1,4 @@
-package ifpr.pgua.eic.escola.controllers;
+package ifpr.pgua.eic.escola.controllers.professor;
 
 import ifpr.pgua.eic.escola.models.Escola;
 import javafx.event.ActionEvent;

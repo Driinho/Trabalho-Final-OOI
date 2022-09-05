@@ -11,7 +11,7 @@
 <BorderPane xmlns="http://javafx.com/javafx" 
       xmlns:fx="http://javafx.com/fxml" 
       prefHeight="600" prefWidth="800"
-      fx:controller="ifpr.pgua.eic.escola.controllers.TelaPrincipalProf"
+      fx:controller="ifpr.pgua.eic.escola.controllers.professor.TelaPrincipalProf"
       >
 
     <left>

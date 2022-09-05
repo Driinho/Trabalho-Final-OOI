@@ -11,7 +11,7 @@
 
 <VBox xmlns="http://javafx.com/javafx" 
       xmlns:fx="http://javafx.com/fxml" 
-      fx:controller="ifpr.pgua.eic.escola.controllers.TelaListaAluno"
+      fx:controller="ifpr.pgua.eic.escola.controllers.aluno.TelaListaAluno"
       >
 
     <padding>

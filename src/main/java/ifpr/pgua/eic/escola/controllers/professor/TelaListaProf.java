@@ -1,4 +1,4 @@
-package ifpr.pgua.eic.escola.controllers;
+package ifpr.pgua.eic.escola.controllers.professor;
 
 import java.net.URL;
 import java.util.ResourceBundle;

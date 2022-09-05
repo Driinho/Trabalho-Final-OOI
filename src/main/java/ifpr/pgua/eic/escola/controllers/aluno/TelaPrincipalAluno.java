@@ -1,24 +1,24 @@
-package ifpr.pgua.eic.escola.controllers;
+package ifpr.pgua.eic.escola.controllers.aluno;
 
 import ifpr.pgua.eic.escola.App;
 import ifpr.pgua.eic.escola.utils.BorderPaneRegion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public class TelaPrincipalProf {
+public class TelaPrincipalAluno {
 
     @FXML
     private void mudarTelaCadastro(ActionEvent event) {
-        App.changeScreenRegion("CADASTRO_PROF", BorderPaneRegion.CENTER);
+        App.changeScreenRegion("CADASTRO_ALUNO", BorderPaneRegion.CENTER);
     }
 
     @FXML
     private void mudarTelaLista(ActionEvent event) {
-        App.changeScreenRegion("LISTA_PROF", BorderPaneRegion.CENTER);
+        App.changeScreenRegion("LISTA_ALUNO", BorderPaneRegion.CENTER);
     }
 
     @FXML
-    private void mudarTelaInicial(ActionEvent event) {
+    private void mudarTelaInicio(ActionEvent event) {
         App.popScreen();
     }
 }

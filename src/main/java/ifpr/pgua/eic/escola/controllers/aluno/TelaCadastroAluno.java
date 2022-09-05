@@ -1,4 +1,4 @@
-package ifpr.pgua.eic.escola.controllers;
+package ifpr.pgua.eic.escola.controllers.aluno;
 
 import java.time.LocalDate;
 

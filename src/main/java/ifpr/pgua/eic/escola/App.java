@@ -1,12 +1,12 @@
 package ifpr.pgua.eic.escola;
 
-import ifpr.pgua.eic.escola.controllers.TelaCadastroAluno;
-import ifpr.pgua.eic.escola.controllers.TelaCadastroProf;
 import ifpr.pgua.eic.escola.controllers.TelaInicial;
-import ifpr.pgua.eic.escola.controllers.TelaListaAluno;
-import ifpr.pgua.eic.escola.controllers.TelaListaProf;
-import ifpr.pgua.eic.escola.controllers.TelaPrincipalAluno;
-import ifpr.pgua.eic.escola.controllers.TelaPrincipalProf;
+import ifpr.pgua.eic.escola.controllers.aluno.TelaCadastroAluno;
+import ifpr.pgua.eic.escola.controllers.aluno.TelaListaAluno;
+import ifpr.pgua.eic.escola.controllers.aluno.TelaPrincipalAluno;
+import ifpr.pgua.eic.escola.controllers.professor.TelaCadastroProf;
+import ifpr.pgua.eic.escola.controllers.professor.TelaListaProf;
+import ifpr.pgua.eic.escola.controllers.professor.TelaPrincipalProf;
 import ifpr.pgua.eic.escola.models.Escola;
 import ifpr.pgua.eic.escola.utils.BaseAppNavigator;
 import ifpr.pgua.eic.escola.utils.ScreenRegistryFXML;
@@ -40,17 +40,17 @@ public class App extends BaseAppNavigator {
     public void registrarTelas() {
         registraTela("INICIAL", new ScreenRegistryFXML(App.class, "view/telaInicial.fxml", o -> new TelaInicial()));
         registraTela("PRINCIPAL_PROF",
-                new ScreenRegistryFXML(App.class, "view/telaPrincipalProf.fxml", o -> new TelaPrincipalProf()));
+                new ScreenRegistryFXML(App.class, "view/professor/telaPrincipalProf.fxml", o -> new TelaPrincipalProf()));
         registraTela("CADASTRO_PROF",
-                new ScreenRegistryFXML(App.class, "view/telaCadastroProf.fxml", o -> new TelaCadastroProf(escola)));
+                new ScreenRegistryFXML(App.class, "view/professor/telaCadastroProf.fxml", o -> new TelaCadastroProf(escola)));
         registraTela("LISTA_PROF",
-                new ScreenRegistryFXML(App.class, "view/telaListaProf.fxml", o -> new TelaListaProf(escola)));
+                new ScreenRegistryFXML(App.class, "view/professor/telaListaProf.fxml", o -> new TelaListaProf(escola)));
         registraTela("PRINCIPAL_ALUNO",
-                new ScreenRegistryFXML(App.class, "view/telaPrincipalAluno.fxml", o -> new TelaPrincipalAluno()));
+                new ScreenRegistryFXML(App.class, "view/aluno/telaPrincipalAluno.fxml", o -> new TelaPrincipalAluno()));
         registraTela("CADASTRO_ALUNO",
-                new ScreenRegistryFXML(App.class, "view/telaCadastroAluno.fxml", o -> new TelaCadastroAluno(escola)));
+                new ScreenRegistryFXML(App.class, "view/aluno/telaCadastroAluno.fxml", o -> new TelaCadastroAluno(escola)));
         registraTela("LISTA_ALUNO",
-                new ScreenRegistryFXML(App.class, "view/telaListaAluno.fxml", o -> new TelaListaAluno(escola)));
+                new ScreenRegistryFXML(App.class, "view/aluno/telaListaAluno.fxml", o -> new TelaListaAluno(escola)));
     }
 
     @Override
