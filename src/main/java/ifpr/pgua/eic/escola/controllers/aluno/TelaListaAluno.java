@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import ifpr.pgua.eic.escola.models.Aluno;
 import ifpr.pgua.eic.escola.models.Escola;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
@@ -36,12 +37,17 @@ public class TelaListaAluno implements Initializable {
     }
 
     @FXML
-    private void buscarAluno() {
+    private void buscarAluno(ActionEvent event) {
         String filtro = campoFiltro.getText();
-        Aluno aluno = escola.buscarAlunoCpf(filtro);
-        ltvAluno.getItems().clear();
-        if(aluno != null) {
-            ltvAluno.getItems().add(aluno);
+        if(!filtro.equals("")) {
+            Aluno aluno = escola.buscarAlunoCpf(filtro);
+            ltvAluno.getItems().clear();
+            if(aluno != null) {
+                ltvAluno.getItems().add(aluno);
+            }
+        } else {
+            ltvAluno.getItems().clear();
+            ltvAluno.getItems().addAll(escola.listarAlunos());
         }
     }
 

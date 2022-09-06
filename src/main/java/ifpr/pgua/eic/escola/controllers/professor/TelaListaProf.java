@@ -39,10 +39,15 @@ public class TelaListaProf implements Initializable {
     @FXML 
     private void buscarProf(ActionEvent event) {
         String filtro = campoFiltro.getText();
-        Professor professor = escola.buscarProfessorCpf(filtro);
-        ltvProf.getItems().clear();
-        if(professor != null) {
-            ltvProf.getItems().add(professor);
+        if(!filtro.equals("")) {
+            Professor professor = escola.buscarProfessorCpf(filtro);
+            ltvProf.getItems().clear();
+            if(professor != null) {
+                ltvProf.getItems().add(professor);
+            }
+        } else {
+            ltvProf.getItems().clear();
+            ltvProf.getItems().addAll(escola.listarProfessores());
         }
     }
 
