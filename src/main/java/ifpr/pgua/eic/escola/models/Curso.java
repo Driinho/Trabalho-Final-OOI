@@ -78,4 +78,9 @@ public class Curso {
     public void setAlunos(ArrayList<Aluno> alunos) {
         this.alunos = alunos;
     }
+
+    @Override
+    public String toString() {
+        return codigo + " - " + nome;
+    }
 }

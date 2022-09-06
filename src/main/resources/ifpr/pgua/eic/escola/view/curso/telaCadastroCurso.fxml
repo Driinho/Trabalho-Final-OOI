@@ -28,7 +28,7 @@
         <Label text="Carga Horária: " />
         <TextField fx:id="campoCargaHoraria" />
         <Label text="Professor: " />
-        <TextField fx:id="campoProfessor" />
+        <ComboBox fx:id="comboProfessor" />
         <HBox spacing="10">
             <Button text="Cadastrar" onAction="#cadastrar"/>
             <Button text="Limpar" onAction="#clear"/>

@@ -87,6 +87,11 @@ public class Escola {
     }
 
     public Curso buscarCurso(String nome) {
+        for(Curso curso : cursos) {
+            if(curso.getNome().equals(nome)) {
+                return curso;
+            }
+        }
         return null;
     }
 
