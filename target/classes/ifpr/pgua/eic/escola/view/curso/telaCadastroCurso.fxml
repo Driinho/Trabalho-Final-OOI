@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+
+<VBox xmlns="http://javafx.com/javafx" 
+      xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="ifpr.pgua.eic.escola.controllers.curso.TelaCadastroCurso"
+      >
+  
+    <padding>
+        <Insets topRightBottomLeft="20.0"/>
+    </padding>
+
+    <VBox>
+        <Label text="Código: " />
+        <TextField fx:id="campoCodigo" />
+        <Label text="Nome: " />
+        <TextField fx:id="campoNome" />
+        <Label text="Descrição: " />
+        <TextField fx:id="campoDescricao" />
+        <Label text="Carga Horária: " />
+        <TextField fx:id="campoCargaHoraria" />
+        <Label text="Professor: " />
+        <TextField fx:id="campoProfessor" />
+        <HBox spacing="10">
+            <Button text="Cadastrar" onAction="#cadastrar"/>
+            <Button text="Limpar" onAction="#clear"/>
+        </HBox>
+    </VBox>
+</VBox>

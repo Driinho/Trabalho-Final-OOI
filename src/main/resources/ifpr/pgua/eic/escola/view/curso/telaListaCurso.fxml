@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+
+<VBox xmlns="http://javafx.com/javafx" 
+      xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="ifpr.pgua.eic.escola.controllers.curso.TelaListaCurso"
+      >
+
+    <padding>
+          <Insets topRightBottomLeft="20.0"/>
+    </padding>
+
+    <VBox>
+        <HBox >
+            <TextField fx:id="campoFiltro" promptText="Digite o Código..."/>
+            <Button text="Buscar" onAction="#buscarCurso" />
+        </HBox>
+        <ListView fx:id="ltvCurso" onMouseClicked="#mostrarDetalhes" />
+    </VBox>
+
+    <VBox >
+        <TextArea fx:id="taDetalhes" editable="false"/>
+    </VBox>
+
+</VBox>

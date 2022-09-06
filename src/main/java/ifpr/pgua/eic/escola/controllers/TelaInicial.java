@@ -12,6 +12,11 @@ public class TelaInicial {
     }
 
     @FXML
+    private void mudarTelaCurso(ActionEvent event) {
+        App.pushScreen("PRINCIPAL_CURSO");
+    }
+
+    @FXML
     private void mudarTelaAluno(ActionEvent event) {
         App.pushScreen("PRINCIPAL_ALUNO");
     }
