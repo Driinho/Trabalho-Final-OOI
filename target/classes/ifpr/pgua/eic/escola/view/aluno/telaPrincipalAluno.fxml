@@ -18,6 +18,7 @@
         <VBox alignment="center">
             <Button text="Cadastro" onAction="#mudarTelaCadastro"/>
             <Button text="Lista" onAction="#mudarTelaLista"/>
+            <Button text="Matricula" onAction="#mudarTelaMatricula"/>
             <Button text="Voltar" onAction="#mudarTelaInicio"/>
         </VBox>
     </left>

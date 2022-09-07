@@ -18,6 +18,11 @@ public class TelaPrincipalAluno {
     }
 
     @FXML
+    private void mudarTelaMatricula(ActionEvent event) {
+        App.changeScreenRegion("MATRICULA_ALUNO", BorderPaneRegion.CENTER);
+    }
+
+    @FXML
     private void mudarTelaInicio(ActionEvent event) {
         App.popScreen();
     }

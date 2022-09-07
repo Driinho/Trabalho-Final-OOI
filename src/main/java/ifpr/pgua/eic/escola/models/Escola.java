@@ -27,9 +27,16 @@ public class Escola {
         cadastrarAluno("-222", "Gustavo", "gustavo@gmail.com", "222-222", LocalDate.now());
         cadastrarAluno("333-333", "Andre", "andre@gmail.com", "333-333", LocalDate.now());
 
-        cadastrarProfessor("444-444", "Jonas", "jonas@gmail.com", "444-444", 1200);
-        cadastrarProfessor("555-555", "Alberto", "alberto@gmail.com", "555-555", 1200);
-        cadastrarProfessor("666-666", "Rodrigo", "rodrigo@gmail.com", "666-666", 1200);
+        cadastrarProfessor("444-444", "Hugo", "hugo@gmail.com", "444-444", 1000000);
+        cadastrarProfessor("555-555", "Gil", "gil@gmail.com", "555-555", 1200);
+        cadastrarProfessor("666-666", "Valério", "valerio@gmail.com", "666-666", 1200);
+
+        Professor professor1 = new Professor("444-444", "Hugo", "hugo@gmail.com", "444-444", 1000000);
+        Professor professor2 = new Professor("555-555", "Gil", "gil@gmail.com", "555-555", 1200);
+        Professor professor3 = new Professor("666-666", "Valério", "valerio@gmail.com", "666-666", 1200);
+        cadastrarCurso(1, "Orientação a Objetos", "Melhor aula", 100, professor1);
+        cadastrarCurso(2, "Desenvolvimento Web", "Aula", 100, professor2);
+        cadastrarCurso(3, "Engenharia de Software", "Aula", 100, professor3);
     }
 
     public boolean cadastrarAluno(String cpf, String nome, String email, String telefone, LocalDate dataMatricula) {

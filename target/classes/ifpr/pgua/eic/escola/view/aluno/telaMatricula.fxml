@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+
+<VBox xmlns="http://javafx.com/javafx" 
+      xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="ifpr.pgua.eic.escola.controllers.aluno.TelaMatricula"
+      >
+
+    <padding>
+        <Insets topRightBottomLeft="20.0"/>
+    </padding>
+
+    <VBox>
+        <Label text="Aluno: " />
+        <ComboBox fx:id="cbAlunos"/>
+    </VBox>
+
+    <HBox>
+        <VBox>
+            <Label text="Curso: " />
+            <ComboBox fx:id="cbCursos"/>
+        </VBox>
+        <VBox>
+            <Label text="" />
+            <Button text="Matricular" onAction="#matricularAluno" />
+        </VBox>
+    </HBox>
+
+    <TableView fx:id="tvCursosMatriculados">
+        <columns>
+            <TableColumn text="Código" fx:id="codigoCurso" />
+            <TableColumn text="Nome" fx:id="nomeCurso" />
+            <TableColumn text="Descrição" fx:id="descricaoCurso" />
+            <TableColumn text="Carga Horária" fx:id="cargaHorariaCurso" />
+            <TableColumn text="Professor" fx:id="professorCurso" />
+        </columns>
+    </TableView>
+
+</VBox>

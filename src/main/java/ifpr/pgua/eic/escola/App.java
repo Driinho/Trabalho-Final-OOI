@@ -3,6 +3,7 @@ package ifpr.pgua.eic.escola;
 import ifpr.pgua.eic.escola.controllers.TelaInicial;
 import ifpr.pgua.eic.escola.controllers.aluno.TelaCadastroAluno;
 import ifpr.pgua.eic.escola.controllers.aluno.TelaListaAluno;
+import ifpr.pgua.eic.escola.controllers.aluno.TelaMatricula;
 import ifpr.pgua.eic.escola.controllers.aluno.TelaPrincipalAluno;
 import ifpr.pgua.eic.escola.controllers.curso.TelaCadastroCurso;
 import ifpr.pgua.eic.escola.controllers.curso.TelaListaCurso;
@@ -52,6 +53,8 @@ public class App extends BaseAppNavigator {
                 new ScreenRegistryFXML(App.class, "view/aluno/telaPrincipalAluno.fxml", o -> new TelaPrincipalAluno()));
         registraTela("CADASTRO_ALUNO",
                 new ScreenRegistryFXML(App.class, "view/aluno/telaCadastroAluno.fxml", o -> new TelaCadastroAluno(escola)));
+        registraTela("MATRICULA_ALUNO",
+                new ScreenRegistryFXML(App.class, "view/aluno/telaMatricula.fxml", o -> new TelaMatricula(escola)));
         registraTela("LISTA_ALUNO",
                 new ScreenRegistryFXML(App.class, "view/aluno/telaListaAluno.fxml", o -> new TelaListaAluno(escola)));
         registraTela("PRINCIPAL_CURSO", 
@@ -60,7 +63,6 @@ public class App extends BaseAppNavigator {
                 new ScreenRegistryFXML(App.class, "view/curso/telaCadastroCurso.fxml", o -> new TelaCadastroCurso(escola)));
         registraTela("LISTA_CURSO", 
                 new ScreenRegistryFXML(App.class, "view/curso/telaListaCurso.fxml", o -> new TelaListaCurso(escola)));
-    
     }
 
     @Override
