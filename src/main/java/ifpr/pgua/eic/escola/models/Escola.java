@@ -76,8 +76,8 @@ public class Escola {
     }
 
     public Aluno buscarAlunoCpf(String cpf) {
-        for(Aluno alunoAtual : alunos) {
-            if(alunoAtual.getCpf().equals(cpf)) {
+        for (Aluno alunoAtual : alunos) {
+            if (alunoAtual.getCpf().equals(cpf)) {
                 return alunoAtual;
             }
         }
@@ -85,8 +85,8 @@ public class Escola {
     }
 
     public Professor buscarProfessorCpf(String cpf) {
-        for(Professor professorAtual : professores) {
-            if(professorAtual.getCpf().equals(cpf)) {
+        for (Professor professorAtual : professores) {
+            if (professorAtual.getCpf().equals(cpf)) {
                 return professorAtual;
             }
         }
@@ -94,8 +94,8 @@ public class Escola {
     }
 
     public Curso buscarCurso(String nome) {
-        for(Curso curso : cursos) {
-            if(curso.getNome().equals(nome)) {
+        for (Curso curso : cursos) {
+            if (curso.getNome().equals(nome)) {
                 return curso;
             }
         }

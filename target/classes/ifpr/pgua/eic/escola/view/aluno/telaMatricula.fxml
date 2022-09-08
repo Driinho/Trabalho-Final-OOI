@@ -20,7 +20,7 @@
 
     <VBox>
         <Label text="Aluno: " />
-        <ComboBox fx:id="cbAlunos"/>
+        <ComboBox fx:id="cbAlunos" onAction="#populaTabela"/>
     </VBox>
 
     <HBox>

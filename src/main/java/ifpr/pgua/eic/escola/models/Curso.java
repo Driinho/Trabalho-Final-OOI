@@ -23,7 +23,11 @@ public class Curso {
 
     public boolean matricula(Aluno aluno) {
 
-        return false;
+        if (alunos.add(aluno)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean desmatricula(String cpf) {

@@ -12,8 +12,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
-public class TelaCadastroCurso implements Initializable{
-    
+public class TelaCadastroCurso implements Initializable {
+
     private Escola escola;
 
     @FXML
@@ -43,14 +43,14 @@ public class TelaCadastroCurso implements Initializable{
 
     @FXML
     private void cadastrar() {
-        
+
         try {
             int codigo = Integer.parseInt(campoCodigo.getText());
             String nome = campoNome.getText();
             String descricao = campoDescricao.getText();
             int cargaHoraria = Integer.parseInt(campoCargaHoraria.getText());
-            Professor professor = comboProfessor.getSelectionModel().getSelectedItem();
-    
+            Professor professor = comboProfessor.getValue();
+
             escola.cadastrarCurso(codigo, nome, descricao, cargaHoraria, professor);
             clear();
             Alert alert = new Alert(AlertType.INFORMATION, "Curso Cadastrado!!");
