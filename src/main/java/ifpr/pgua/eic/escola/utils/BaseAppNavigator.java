@@ -51,6 +51,7 @@ public abstract class BaseAppNavigator extends Application {
 
         this.palco.setScene(cena);
         this.palco.setTitle(getAppTitle());
+        this.palco.setFullScreen(true);
         this.palco.show();
     }
 
