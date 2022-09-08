@@ -16,4 +16,8 @@ public class Professor extends Pessoa {
     public void setSalario(double salario) {
         this.salario = salario;
     }
+
+    public String toText() {
+        return cpf + ";" + nome + ";" + email + ";" + telefone + ";" + salario; 
+    }
 }

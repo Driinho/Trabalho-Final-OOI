@@ -80,7 +80,7 @@ public class TelaMatricula implements Initializable {
         for (Curso curso : escola.listarCursos()) {
             boolean matriculado = false;
             for (Aluno aluno : curso.getAlunos()) {
-                if (aluno.getCpf().equals(alunoSelecionado.getCpf())) {
+                if (aluno.getCpf().equals(alunoSelecionado != null ? alunoSelecionado.getCpf() : "")) {
                     cursosMatriculados.add(curso);
                     matriculado = true;
                 }

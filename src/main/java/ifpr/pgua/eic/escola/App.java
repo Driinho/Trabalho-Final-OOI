@@ -1,5 +1,7 @@
 package ifpr.pgua.eic.escola;
 
+import java.io.File;
+
 import ifpr.pgua.eic.escola.controllers.TelaInicial;
 import ifpr.pgua.eic.escola.controllers.aluno.TelaCadastroAluno;
 import ifpr.pgua.eic.escola.controllers.aluno.TelaListaAluno;
@@ -18,6 +20,7 @@ import ifpr.pgua.eic.escola.utils.ScreenRegistryFXML;
 public class App extends BaseAppNavigator {
 
     private Escola escola;
+    File pasta;
 
     public static void main(String[] args) {
         launch();
@@ -26,7 +29,10 @@ public class App extends BaseAppNavigator {
     @Override
     public void init() throws Exception {
         super.init();
-
+        pasta = new File("src/main/resources/ifpr/pgua/eic/escola/arquivos");
+        if(!pasta.exists()) {
+            pasta.mkdir();
+        }
         escola = new Escola("IFPR - CAMPUS PARANAGUÁ", "4002-8922");
     }
 

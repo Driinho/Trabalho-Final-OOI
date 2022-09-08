@@ -18,4 +18,8 @@ public class Aluno extends Pessoa {
     public void setDataMatricula(LocalDate dataMatricula) {
         this.dataMatricula = dataMatricula;
     }
+
+    public String toText() {
+        return cpf + ";" + nome + ";" + email + ";" + telefone + ";" + dataMatricula;
+    }
 }

@@ -1,5 +1,9 @@
 package ifpr.pgua.eic.escola.models;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -10,6 +14,9 @@ public class Escola {
     private ArrayList<Professor> professores;
     private ArrayList<Aluno> alunos;
     private ArrayList<Curso> cursos;
+    private File arquivoProfessor;
+    private File arquivoAluno;
+    private File arquivoCurso;
 
     public Escola(String nome, String telefone) {
         this.nome = nome;
@@ -18,6 +25,10 @@ public class Escola {
         professores = new ArrayList<>();
         alunos = new ArrayList<>();
         cursos = new ArrayList<>();
+
+        arquivoProfessor = new File("src/main/resources/ifpr/pgua/eic/escola/arquivos/arquivoProfessor.txt");
+        arquivoAluno = new File("src/main/resources/ifpr/pgua/eic/escola/arquivos/arquivoAluno.txt");
+        arquivoCurso = new File("src/main/resources/ifpr/pgua/eic/escola/arquivos/arquivoCurso.txt");
 
         criaFakes();
     }
@@ -40,15 +51,67 @@ public class Escola {
     }
 
     public boolean cadastrarAluno(String cpf, String nome, String email, String telefone, LocalDate dataMatricula) {
-        return alunos.add(new Aluno(cpf, nome, email, telefone, dataMatricula));
+        if(buscarAlunoCpf(cpf) == null) {
+            Aluno aluno = new Aluno(cpf, nome, email, telefone, dataMatricula);
+            try{
+                FileWriter fwriter = new FileWriter(arquivoAluno,true);
+                BufferedWriter bwriter = new BufferedWriter(fwriter);
+    
+                bwriter.write(aluno.toText());
+                bwriter.newLine();
+    
+                bwriter.close();
+                fwriter.close();
+    
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+            return alunos.add(aluno);
+        } return false;
     }
 
     public boolean cadastrarProfessor(String cpf, String nome, String email, String telefone, double salario) {
-        return professores.add(new Professor(cpf, nome, email, telefone, salario));
+        if(buscarAlunoCpf(cpf) == null) {
+            Professor professor = new Professor(cpf, nome, email, telefone, salario);
+            try {
+                FileWriter fWriter = new FileWriter(arquivoProfessor, true);
+                BufferedWriter bWriter = new BufferedWriter(fWriter);
+    
+                bWriter.write(professor.toText());
+                bWriter.newLine();
+    
+                bWriter.close();
+                fWriter.close();
+    
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    
+            return professores.add(professor);
+        } else {
+            return false;
+        }
     }
 
     public boolean cadastrarCurso(int codigo, String nome, String descricao, int cargaHoraria, Professor professor) {
-        return cursos.add(new Curso(codigo, nome, descricao, cargaHoraria, professor));
+        if(buscarCurso(nome) == null) {
+            Curso curso = new Curso(codigo, nome, descricao, cargaHoraria, professor);
+            try {
+                FileWriter fWriter = new FileWriter(arquivoCurso, true);
+                BufferedWriter bWriter = new BufferedWriter(fWriter);
+    
+                bWriter.write(curso.toText());
+                bWriter.newLine();
+    
+                bWriter.close();
+                fWriter.close();
+            } catch(IOException e) {
+                e.printStackTrace();
+            } 
+            return cursos.add(curso);
+        } else {
+            return false;
+        }
     }
 
     public boolean matricularAluno(Aluno aluno, Curso curso) {
