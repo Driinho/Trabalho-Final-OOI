@@ -34,14 +34,18 @@
         </VBox>
     </HBox>
 
-    <TableView fx:id="tvCursosMatriculados">
-        <columns>
-            <TableColumn text="Código" fx:id="codigoCurso" />
-            <TableColumn text="Nome" fx:id="nomeCurso" />
-            <TableColumn text="Descrição" fx:id="descricaoCurso" />
-            <TableColumn text="Carga Horária" fx:id="cargaHorariaCurso" />
-            <TableColumn text="Professor" fx:id="professorCurso" />
-        </columns>
-    </TableView>
+    <VBox>
+        <Label text="Cursos Matriculados" />
+        <TableView fx:id="tvCursosMatriculados" onMouseClicked="#apareceBotao">
+            <columns>
+                <TableColumn text="Código" fx:id="codigoCurso" />
+                <TableColumn text="Nome" fx:id="nomeCurso" />
+                <TableColumn text="Descrição" fx:id="descricaoCurso" />
+                <TableColumn text="Carga Horária" fx:id="cargaHorariaCurso" />
+                <TableColumn text="Professor" fx:id="professorCurso" />
+            </columns>
+        </TableView>
+        <Button fx:id="btnDesmatricula" text="Desmatricular" onAction="#desmatricula" opacity="0"/>
+    </VBox>
 
 </VBox>

@@ -25,13 +25,17 @@ public class Curso {
 
         if (alunos.add(aluno)) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     public boolean desmatricula(String cpf) {
-
+        for (Aluno aluno : alunos) {
+            if (aluno.getCpf().equals(cpf)) {
+                alunos.remove(aluno);
+                return true;
+            }
+        }
         return false;
     }
 

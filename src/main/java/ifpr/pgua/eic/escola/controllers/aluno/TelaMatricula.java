@@ -11,11 +11,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 public class TelaMatricula implements Initializable {
 
@@ -45,6 +47,9 @@ public class TelaMatricula implements Initializable {
     @FXML
     private TableColumn<Curso, String> professorCurso;
 
+    @FXML
+    private Button btnDesmatricula;
+
     public TelaMatricula(Escola escola) {
         this.escola = escola;
     }
@@ -66,18 +71,26 @@ public class TelaMatricula implements Initializable {
     }
 
     @FXML
-    private void populaTabela() {
+    private void populaTabela(ActionEvent event) {
         ArrayList<Curso> cursosMatriculados = new ArrayList<>();
+        ArrayList<Curso> cursosNaoMatriculados = new ArrayList<>();
+
         Aluno alunoSelecionado = cbAlunos.getValue();
 
         for (Curso curso : escola.listarCursos()) {
+            boolean matriculado = false;
             for (Aluno aluno : curso.getAlunos()) {
                 if (aluno.getCpf().equals(alunoSelecionado.getCpf())) {
                     cursosMatriculados.add(curso);
+                    matriculado = true;
                 }
             }
+            if (!matriculado) {
+                cursosNaoMatriculados.add(curso);
+            }
         }
-
+        cbCursos.getItems().clear();
+        cbCursos.getItems().addAll(cursosNaoMatriculados);
         tvCursosMatriculados.getItems().setAll(cursosMatriculados);
     }
 
@@ -97,8 +110,33 @@ public class TelaMatricula implements Initializable {
     }
 
     @FXML
+    private void desmatricula(ActionEvent event) {
+        Aluno aluno = cbAlunos.getValue();
+        Curso curso = tvCursosMatriculados.getSelectionModel().getSelectedItem();
+
+        if (escola.desmatricular(aluno, curso)) {
+            Alert alert = new Alert(AlertType.INFORMATION, "ALUNO DESMATRICULADO!");
+            alert.showAndWait();
+            clear();
+        } else {
+            Alert alert = new Alert(AlertType.ERROR, "ERRO ALUNO NÃO DESMATRICULADO!");
+            alert.showAndWait();
+        }
+
+    }
+
+    @FXML
+    private void apareceBotao(MouseEvent event) {
+        if (tvCursosMatriculados.getSelectionModel().getSelectedItem() != null) {
+            btnDesmatricula.setOpacity(1);
+        }
+    }
+
+    @FXML
     private void clear() {
         cbAlunos.getSelectionModel().clearSelection();
         cbCursos.getSelectionModel().clearSelection();
+        tvCursosMatriculados.getItems().clear();
+        btnDesmatricula.setOpacity(0);
     }
 }
