@@ -150,10 +150,7 @@ public class Escola {
 
                     alunos.add(aluno);
                 }
-
                 leitor.close();
-
-                System.out.println(alunos.size());
                 return alunos;
             } catch (IOException e) {
                 e.printStackTrace();
@@ -163,7 +160,30 @@ public class Escola {
     }
 
     public ArrayList<Professor> listarProfessores() {
-        return professores;
+        professores.clear();
+        if(arquivoProfessor.exists()) {
+            try {
+                Scanner leitor = new Scanner(arquivoProfessor);
+
+                while(leitor.hasNextLine()) {
+                    String linha = leitor.nextLine();
+                    String[] tokens = linha.split(";");
+
+                    String cpfProfessor = tokens[0];
+                    String nomeProfessor = tokens[1];
+                    String emailProfessor = tokens[2];
+                    String telefoneProfessor = tokens[3];
+                    double salarioProfessor = Double.parseDouble(tokens[4]);
+
+                    professores.add(new Professor(cpfProfessor, nomeProfessor, emailProfessor, telefoneProfessor, salarioProfessor));
+                }
+                leitor.close();
+                return professores;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 
     public ArrayList<Curso> listarCursos() {
@@ -208,9 +228,30 @@ public class Escola {
     }
 
     public Professor buscarProfessorCpf(String cpf) {
-        for (Professor professorAtual : professores) {
-            if (professorAtual.getCpf().equals(cpf)) {
-                return professorAtual;
+        if(arquivoProfessor.exists()) {
+            try {
+                Scanner leitor = new Scanner(arquivoProfessor);
+
+                while(leitor.hasNextLine()) {
+                    String linha = leitor.nextLine();
+                    String[] tokens = linha.split(";");
+
+                    String cpfProfessor = tokens[0];
+                    String nomeProfessor = tokens[1];
+                    String emailProfessor = tokens[2];
+                    String telefoneProfessor = tokens[3];
+                    double salarioProfessor = Double.parseDouble(tokens[4]);
+
+                    if(cpf.equals(cpfProfessor)) {
+                        leitor.close();
+                        return new Professor(cpfProfessor, nomeProfessor, emailProfessor, telefoneProfessor, salarioProfessor);
+                    }
+                }
+
+                leitor.close();
+                
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
         return null;
