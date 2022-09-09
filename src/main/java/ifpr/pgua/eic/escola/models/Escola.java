@@ -36,7 +36,7 @@ public class Escola {
 
     public void criaFakes() {
         cadastrarAluno("111-111", "Pedro", "pedro@gmail.com", "111-111", LocalDate.now());
-        cadastrarAluno("-222", "Gustavo", "gustavo@gmail.com", "222-222", LocalDate.now());
+        cadastrarAluno("222-222", "Gustavo", "gustavo@gmail.com", "222-222", LocalDate.now());
         cadastrarAluno("333-333", "Andre", "andre@gmail.com", "333-333", LocalDate.now());
 
         cadastrarProfessor("444-444", "Hugo", "hugo@gmail.com", "444-444", 1000000);
@@ -215,7 +215,29 @@ public class Escola {
     }
 
     public ArrayList<Aluno> listarAlunosMatriculados(Curso curso) {
-        return curso.getAlunos();
+        alunos.clear();
+        if(curso.getArquivoMatricula().exists()) {
+            try {
+                Scanner leitor = new Scanner(curso.getArquivoMatricula());
+
+                while(leitor.hasNextLine()) {
+                    String linha = leitor.nextLine();
+                    String[] tokens = linha.split(";");
+
+                    String nomeCurso = tokens[0];
+                    String cpfAluno = tokens[1];
+
+                    if(nomeCurso.equals(curso.getNome())) {
+                        alunos.add(buscarAlunoCpf(cpfAluno));
+                    }
+                }
+                leitor.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return alunos;
+        }
+        return null;
     }
 
     public Aluno buscarAlunoCpf(String cpf) {

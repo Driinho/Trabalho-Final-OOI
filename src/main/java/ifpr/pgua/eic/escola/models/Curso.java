@@ -35,7 +35,7 @@ public class Curso {
             FileWriter fWriter = new FileWriter(arquivoMatricula, true);
             BufferedWriter bWriter = new BufferedWriter(fWriter);
 
-            bWriter.write(aluno.getCpf());
+            bWriter.write(nome + ";" + aluno.getCpf());
             bWriter.newLine();
 
             bWriter.close();
@@ -108,6 +108,14 @@ public class Curso {
         this.alunos = alunos;
     }
 
+    public File getArquivoMatricula() {
+        return arquivoMatricula;
+    }
+
+    public void setArquivoMatricula(File arquivoMatricula) {
+        this.arquivoMatricula = arquivoMatricula;
+    }
+    
     @Override
     public String toString() {
         return codigo + " - " + nome;
@@ -116,4 +124,5 @@ public class Curso {
     public String toText() {
         return codigo + ";" + nome + ";" + descricao + ";" + cargaHoraria + ";" + professor.getCpf();
     }
+
 }

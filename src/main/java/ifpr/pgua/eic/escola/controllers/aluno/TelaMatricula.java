@@ -58,10 +58,14 @@ public class TelaMatricula implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
 
         cbAlunos.getItems().clear();
-        cbAlunos.getItems().addAll(escola.listarAlunos());
+        if(escola.listarAlunos() != null) {
+            cbAlunos.getItems().addAll(escola.listarAlunos());
+        }
 
         cbCursos.getItems().clear();
-        cbCursos.getItems().addAll(escola.listarCursos());
+        if(escola.listarCursos() != null) {
+            cbCursos.getItems().addAll(escola.listarCursos());
+        }
 
         codigoCurso.setCellValueFactory(new PropertyValueFactory<Curso, String>("codigo"));
         nomeCurso.setCellValueFactory(new PropertyValueFactory<Curso, String>("nome"));
@@ -79,7 +83,7 @@ public class TelaMatricula implements Initializable {
 
         for (Curso curso : escola.listarCursos()) {
             boolean matriculado = false;
-            for (Aluno aluno : curso.getAlunos()) {
+            for (Aluno aluno : escola.listarAlunosMatriculados(curso)) {
                 if (aluno.getCpf().equals(alunoSelecionado != null ? alunoSelecionado.getCpf() : "")) {
                     cursosMatriculados.add(curso);
                     matriculado = true;
@@ -98,14 +102,15 @@ public class TelaMatricula implements Initializable {
     private void matricularAluno(ActionEvent event) {
         Aluno aluno = cbAlunos.getValue();
         Curso curso = cbCursos.getValue();
-
-        if (escola.matricularAluno(aluno, curso)) {
-            Alert alert = new Alert(AlertType.INFORMATION, "ALUNO MATRICULADO!");
-            alert.showAndWait();
-            clear();
-        } else {
-            Alert alert = new Alert(AlertType.ERROR, "ERRO ALUNO NÃO MATRICULADO!");
-            alert.showAndWait();
+        if(aluno != null && curso != null) {
+            if (escola.matricularAluno(aluno, curso)) {
+                Alert alert = new Alert(AlertType.INFORMATION, "ALUNO MATRICULADO!");
+                alert.showAndWait();
+                clear();
+            } else {
+                Alert alert = new Alert(AlertType.ERROR, "ERRO ALUNO NÃO MATRICULADO!");
+                alert.showAndWait();
+            }
         }
     }
 

@@ -1,3 +1,0 @@
-111-111;Pedro;pedro@gmail.com;111-111;2022-09-09
--222;Gustavo;gustavo@gmail.com;222-222;2022-09-09
-333-333;Andre;andre@gmail.com;333-333;2022-09-09
