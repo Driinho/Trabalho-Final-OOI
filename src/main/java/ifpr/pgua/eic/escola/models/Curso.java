@@ -114,6 +114,6 @@ public class Curso {
     }
 
     public String toText() {
-        return codigo + ";" + nome + ";" + descricao + ";" + cargaHoraria + ";" + professor.toString();
+        return codigo + ";" + nome + ";" + descricao + ";" + cargaHoraria + ";" + professor.getCpf();
     }
 }

@@ -33,7 +33,9 @@ public class TelaListaCurso implements Initializable{
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         ltvCurso.getItems().clear();
-        ltvCurso.getItems().addAll(escola.listarCursos());        
+        if(escola.listarCursos() != null) {
+            ltvCurso.getItems().addAll(escola.listarCursos());        
+        }
     }
 
     @FXML

@@ -43,7 +43,7 @@ public class Escola {
         cadastrarProfessor("555-555", "Gil", "gil@gmail.com", "555-555", 1200);
         cadastrarProfessor("666-666", "Valério", "valerio@gmail.com", "666-666", 1200);
 
-        Professor professor1 = new Professor("444-444", "Hugo", "hugo@gmail.com", "444-444", 1000000);
+        Professor professor1 = new Professor("444-444", "Jorge", "hugo@gmail.com", "444-444", 1000000);
         Professor professor2 = new Professor("555-555", "Gil", "gil@gmail.com", "555-555", 1200);
         Professor professor3 = new Professor("666-666", "Valério", "valerio@gmail.com", "666-666", 1200);
         cadastrarCurso(1, "Orientação a Objetos", "Melhor aula", 100, professor1);
@@ -63,6 +63,7 @@ public class Escola {
     
                 bwriter.close();
                 fwriter.close();
+
                 return alunos.add(aluno);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -73,7 +74,7 @@ public class Escola {
     }
 
     public boolean cadastrarProfessor(String cpf, String nome, String email, String telefone, double salario) {
-        if(buscarAlunoCpf(cpf) == null) {
+        if(buscarProfessorCpf(cpf) == null) {
             Professor professor = new Professor(cpf, nome, email, telefone, salario);
             try {
                 FileWriter fWriter = new FileWriter(arquivoProfessor, true);
@@ -85,14 +86,14 @@ public class Escola {
                 bWriter.close();
                 fWriter.close();
     
+                return professores.add(professor);
             } catch (IOException e) {
                 e.printStackTrace();
             }
     
-            return professores.add(professor);
-        } else {
-            return false;
         }
+        return false;
+        
     }
 
     public boolean cadastrarCurso(int codigo, String nome, String descricao, int cargaHoraria, Professor professor) {
@@ -107,13 +108,13 @@ public class Escola {
     
                 bWriter.close();
                 fWriter.close();
+
+                return cursos.add(curso);
             } catch(IOException e) {
                 e.printStackTrace();
             } 
-            return cursos.add(curso);
-        } else {
-            return false;
         }
+        return false;
     }
 
     public boolean matricularAluno(Aluno aluno, Curso curso) {
@@ -146,9 +147,7 @@ public class Escola {
 
                     LocalDate dataMatriculaAluno = LocalDate.of(ano, mes, dia);
 
-                    Aluno aluno = new Aluno(cpfAluno, nomeAluno, emailAluno, telefoneAluno, dataMatriculaAluno);
-
-                    alunos.add(aluno);
+                    alunos.add(new Aluno(cpfAluno, nomeAluno, emailAluno, telefoneAluno, dataMatriculaAluno));
                 }
                 leitor.close();
                 return alunos;
@@ -187,7 +186,32 @@ public class Escola {
     }
 
     public ArrayList<Curso> listarCursos() {
-        return cursos;
+        cursos.clear();
+        if(arquivoCurso.exists()) {
+            try {
+                Scanner leitor = new Scanner(arquivoCurso);
+
+                while(leitor.hasNextLine()) {
+                    String linha = leitor.nextLine();
+                    String[] tokens = linha.split(";");
+
+                    int codigoCurso = Integer.parseInt(tokens[0]);
+                    String nomeCurso = tokens[1];
+                    String descricaoCurso = tokens[2];
+                    int cargaHorariaCurso = Integer.parseInt(tokens[3]);
+                    String cpfProfessor = tokens[4];
+
+                    Professor professor = buscarProfessorCpf(cpfProfessor);
+
+                    cursos.add(new Curso(codigoCurso, nomeCurso, descricaoCurso, cargaHorariaCurso, professor));
+                }
+                leitor.close();
+                return cursos;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 
     public ArrayList<Aluno> listarAlunosMatriculados(Curso curso) {
@@ -258,9 +282,32 @@ public class Escola {
     }
 
     public Curso buscarCurso(String nome) {
-        for (Curso curso : cursos) {
-            if (curso.getNome().equals(nome)) {
-                return curso;
+        if(arquivoCurso.exists()) {
+            try {
+                Scanner leitor = new Scanner(arquivoCurso);
+
+                while(leitor.hasNextLine()) {
+                    String linha = leitor.nextLine();
+                    String[] tokens = linha.split(";");
+
+                    int codigoCurso = Integer.parseInt(tokens[0]);
+                    String nomeCurso = tokens[1];
+                    String descricaoCurso = tokens[2];
+                    int cargaHorariaCurso = Integer.parseInt(tokens[3]);
+                    String cpfProfessor = tokens[4];
+
+                    Professor professor = buscarProfessorCpf(cpfProfessor);
+                    
+                    if(nome.equals(nomeCurso)) {
+                        leitor.close();
+                        return new Curso(codigoCurso, nomeCurso, descricaoCurso, cargaHorariaCurso, professor);
+                    }
+                }
+
+                leitor.close();
+            
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
         return null;

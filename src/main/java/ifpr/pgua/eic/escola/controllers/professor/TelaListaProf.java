@@ -33,7 +33,9 @@ public class TelaListaProf implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         ltvProf.getItems().clear();
-        ltvProf.getItems().addAll(escola.listarProfessores());
+        if(escola.listarProfessores() != null) {
+            ltvProf.getItems().addAll(escola.listarProfessores());
+        }
     }
 
     @FXML 
