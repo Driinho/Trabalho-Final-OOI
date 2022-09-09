@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Escola {
 
@@ -53,7 +54,7 @@ public class Escola {
     public boolean cadastrarAluno(String cpf, String nome, String email, String telefone, LocalDate dataMatricula) {
         if(buscarAlunoCpf(cpf) == null) {
             Aluno aluno = new Aluno(cpf, nome, email, telefone, dataMatricula);
-            try{
+            try {
                 FileWriter fwriter = new FileWriter(arquivoAluno,true);
                 BufferedWriter bwriter = new BufferedWriter(fwriter);
     
@@ -62,12 +63,13 @@ public class Escola {
     
                 bwriter.close();
                 fwriter.close();
-    
-            }catch(IOException e){
+                return alunos.add(aluno);
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-            return alunos.add(aluno);
-        } return false;
+        } 
+        
+        return false;
     }
 
     public boolean cadastrarProfessor(String cpf, String nome, String email, String telefone, double salario) {
@@ -123,7 +125,41 @@ public class Escola {
     }
 
     public ArrayList<Aluno> listarAlunos() {
-        return alunos;
+        alunos.clear();
+        if(arquivoAluno.exists()) {
+            try {
+                Scanner leitor = new Scanner(arquivoAluno);
+            
+                while(leitor.hasNextLine()) {
+                    String linha = leitor.nextLine();
+                    String[] tokens = linha.split(";");
+
+                    String cpfAluno = tokens[0];
+                    String nomeAluno = tokens[1];
+                    String emailAluno = tokens[2];
+                    String telefoneAluno = tokens[3];
+                    String data = tokens[4];
+                    String[] dataMatricula = data.split("-");
+                    int ano = Integer.parseInt(dataMatricula[0]);
+                    int mes = Integer.parseInt(dataMatricula[1]);
+                    int dia = Integer.parseInt(dataMatricula[2]);
+
+                    LocalDate dataMatriculaAluno = LocalDate.of(ano, mes, dia);
+
+                    Aluno aluno = new Aluno(cpfAluno, nomeAluno, emailAluno, telefoneAluno, dataMatriculaAluno);
+
+                    alunos.add(aluno);
+                }
+
+                leitor.close();
+
+                System.out.println(alunos.size());
+                return alunos;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 
     public ArrayList<Professor> listarProfessores() {
@@ -139,9 +175,33 @@ public class Escola {
     }
 
     public Aluno buscarAlunoCpf(String cpf) {
-        for (Aluno alunoAtual : alunos) {
-            if (alunoAtual.getCpf().equals(cpf)) {
-                return alunoAtual;
+        if(arquivoAluno.exists()) {
+            try {
+                Scanner leitor = new Scanner(arquivoAluno);
+            
+                while(leitor.hasNextLine()) {
+                    String linha = leitor.nextLine();
+                    String[] tokens = linha.split(";");
+
+                    String cpfAluno = tokens[0];
+                    String nomeAluno = tokens[1];
+                    String emailAluno = tokens[2];
+                    String telefoneAluno = tokens[3];
+                    String data = tokens[4];
+                    String[] dataMatricula = data.split("-");
+                    int ano = Integer.parseInt(dataMatricula[0]);
+                    int mes = Integer.parseInt(dataMatricula[1]);
+                    int dia = Integer.parseInt(dataMatricula[2]);
+
+                    LocalDate dataMatriculaAluno = LocalDate.of(ano, mes, dia);
+                    if(cpf.equals(cpfAluno)) {
+                        leitor.close();
+                        return new Aluno(cpfAluno, nomeAluno, emailAluno, telefoneAluno, dataMatriculaAluno);
+                    }
+                }
+                leitor.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
         return null;

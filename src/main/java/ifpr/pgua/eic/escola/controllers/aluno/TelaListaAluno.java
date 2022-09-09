@@ -33,7 +33,9 @@ public class TelaListaAluno implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         ltvAluno.getItems().clear();
-        ltvAluno.getItems().addAll(escola.listarAlunos());
+        if(escola.listarAlunos() != null) {
+            ltvAluno.getItems().addAll(escola.listarAlunos());
+        }
     }
 
     @FXML
