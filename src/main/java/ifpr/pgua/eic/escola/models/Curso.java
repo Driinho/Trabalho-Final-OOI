@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Curso {
 
@@ -51,11 +52,39 @@ public class Curso {
     }
 
     public boolean desmatricula(String cpf) {
-        for (Aluno aluno : alunos) {
-            if (aluno.getCpf().equals(cpf)) {
-                alunos.remove(aluno);
+        File novoArquivo = new File("src/main/resources/ifpr/pgua/eic/escola/arquivos/arquivoMatricula.txt");
+
+        try {
+            Scanner leitor = new Scanner(arquivoMatricula);
+            FileWriter fWriter = new FileWriter(novoArquivo, true);
+            BufferedWriter bWriter = new BufferedWriter(fWriter);
+            boolean removido = false;
+
+            while(leitor.hasNextLine()) {
+                String linha = leitor.nextLine();
+                String[] tokens = linha.split(";");
+
+                String nomeCurso = tokens[0];
+                String cpfAluno = tokens[1];
+                if(nomeCurso.equals(nome) && cpfAluno.equals(cpf)) {
+                    removido = true;
+                }
+                bWriter.write(nomeCurso + ";" + cpfAluno);
+                bWriter.newLine();
+
+                bWriter.close();
+                fWriter.close();
+            }
+            leitor.close();
+
+            arquivoMatricula.delete();
+            novoArquivo.renameTo(arquivoMatricula);
+            
+            if(removido == true) {
                 return true;
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return false;
     }
@@ -115,7 +144,7 @@ public class Curso {
     public void setArquivoMatricula(File arquivoMatricula) {
         this.arquivoMatricula = arquivoMatricula;
     }
-    
+
     @Override
     public String toString() {
         return codigo + " - " + nome;

@@ -80,19 +80,22 @@ public class TelaMatricula implements Initializable {
         ArrayList<Curso> cursosNaoMatriculados = new ArrayList<>();
 
         Aluno alunoSelecionado = cbAlunos.getValue();
-
+        
         for (Curso curso : escola.listarCursos()) {
             boolean matriculado = false;
-            for (Aluno aluno : escola.listarAlunosMatriculados(curso)) {
-                if (aluno.getCpf().equals(alunoSelecionado != null ? alunoSelecionado.getCpf() : "")) {
-                    cursosMatriculados.add(curso);
-                    matriculado = true;
+            if(escola.listarAlunosMatriculados(curso) != null) {
+                for (Aluno aluno : escola.listarAlunosMatriculados(curso)) {
+                    if (aluno.getCpf().equals(alunoSelecionado != null ? alunoSelecionado.getCpf() : "")) {
+                        cursosMatriculados.add(curso);
+                        matriculado = true;
+                    }
                 }
             }
             if (!matriculado) {
                 cursosNaoMatriculados.add(curso);
             }
         }
+        
         cbCursos.getItems().clear();
         cbCursos.getItems().addAll(cursosNaoMatriculados);
         tvCursosMatriculados.getItems().setAll(cursosMatriculados);
@@ -119,15 +122,16 @@ public class TelaMatricula implements Initializable {
         Aluno aluno = cbAlunos.getValue();
         Curso curso = tvCursosMatriculados.getSelectionModel().getSelectedItem();
 
-        if (escola.desmatricular(aluno, curso)) {
-            Alert alert = new Alert(AlertType.INFORMATION, "ALUNO DESMATRICULADO!");
-            alert.showAndWait();
-            clear();
-        } else {
-            Alert alert = new Alert(AlertType.ERROR, "ERRO ALUNO NÃO DESMATRICULADO!");
-            alert.showAndWait();
+        if(curso != null) {
+            if(escola.desmatricular(aluno, curso)) {
+                Alert alert = new Alert(AlertType.INFORMATION, "ALUNO DESMATRICULADO!");
+                alert.showAndWait();
+                clear();
+            } else {
+                Alert alert = new Alert(AlertType.ERROR, "ERRO ALUNO NÃO DESMATRICULADO!");
+                alert.showAndWait();
+            }
         }
-
     }
 
     @FXML
