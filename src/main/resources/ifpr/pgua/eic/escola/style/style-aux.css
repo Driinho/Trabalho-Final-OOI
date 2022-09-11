@@ -45,7 +45,7 @@
     -fx-text-fill: white;
 }
 
-.tela-cadastro .text-field {
+.text-field {
     -fx-background-radius: 20;
     -fx-font-size: 24;
 }
@@ -54,5 +54,32 @@
     -fx-font-size: 24;
     -fx-pref-width: 200;
     -fx-border-radius: 20;
+    -fx-background-radius: 20;
+}
+
+.tela-lista {
+    -fx-max-width: 1100;
+    -fx-spacing: 10;
+    -fx-padding: 100 20 20 200;
+}
+
+.hbox-busca {
+    -fx-spacing: 10;
+}
+
+.hbox-detalhes {
+    -fx-spacing: 10;
+}
+
+.list-view {
+    -fx-font-size: 24;
+    -fx-pref-width: 400;
+    -fx-backgroung-color: black;
+    -fx-background-radius: 20;
+}
+
+.text-area {
+    -fx-font-size: 24;
+    -fx-max-width: 600;
     -fx-background-radius: 20;
 }

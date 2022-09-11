@@ -13,7 +13,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class TelaListaCurso implements Initializable{
+public class TelaListaCurso implements Initializable {
 
     private Escola escola;
 
@@ -33,20 +33,20 @@ public class TelaListaCurso implements Initializable{
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         ltvCurso.getItems().clear();
-        if(escola.listarCursos() != null) {
-            ltvCurso.getItems().addAll(escola.listarCursos());        
+        if (escola.listarCursos() != null) {
+            ltvCurso.getItems().addAll(escola.listarCursos());
         }
     }
 
     @FXML
     private void buscarCurso(ActionEvent event) {
         String filtro = campoFiltro.getText();
-        if(!filtro.equals("")) {
+        if (!filtro.equals("")) {
             Curso curso = escola.buscarCurso(filtro);
             ltvCurso.getItems().clear();
-            if(curso != null) {
+            if (curso != null) {
                 ltvCurso.getItems().add(curso);
-            } 
+            }
         } else {
             ltvCurso.getItems().clear();
             ltvCurso.getItems().addAll(escola.listarCursos());
@@ -56,16 +56,16 @@ public class TelaListaCurso implements Initializable{
     @FXML
     private void mostrarDetalhes(MouseEvent event) {
         Curso curso = ltvCurso.getSelectionModel().getSelectedItem();
-        
-        if(curso != null) {
+
+        if (curso != null) {
             taDetalhes.clear();
             taDetalhes.appendText("Código: " + curso.getCodigo());
             taDetalhes.appendText("\nNome: " + curso.getNome());
             taDetalhes.appendText("\nDescrição: " + curso.getDescricao());
             taDetalhes.appendText("\nCarga Horária: " + curso.getCargaHoraria());
             taDetalhes.appendText("\nProfessor: " + curso.getProfessor().getNome());
-            if(escola.listarAlunosMatriculados(curso).size() > 0) {
-                taDetalhes.appendText("\n---------------------------------------------");
+            if (escola.listarAlunosMatriculados(curso).size() > 0) {
+                taDetalhes.appendText("\n------------------------------");
                 taDetalhes.appendText("\nAlunos Matriculados");
                 taDetalhes.appendText("\n" + escola.listarAlunosMatriculados(curso));
             }

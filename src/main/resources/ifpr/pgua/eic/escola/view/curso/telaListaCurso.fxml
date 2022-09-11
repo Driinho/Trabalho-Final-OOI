@@ -18,16 +18,22 @@
           <Insets topRightBottomLeft="20.0"/>
     </padding>
 
-    <VBox>
-        <HBox >
+    <VBox styleClass="tela-lista">
+        <HBox styleClass="hbox-busca">
             <TextField fx:id="campoFiltro" promptText="Digite o Código..."/>
-            <Button text="Buscar" onAction="#buscarCurso" />
+            <Button styleClass="btn" text="Buscar" onAction="#buscarCurso" />
         </HBox>
-        <ListView fx:id="ltvCurso" onMouseClicked="#mostrarDetalhes" />
+        <HBox styleClass="hbox-detalhes">
+            <ListView fx:id="ltvCurso" onMouseClicked="#mostrarDetalhes">
+                <padding>
+                    <Insets topRightBottomLeft="7"/>
+                </padding>
+            </ListView>
+            <TextArea fx:id="taDetalhes" editable="false">
+                <padding>
+                    <Insets topRightBottomLeft="7"/>
+                </padding>
+            </TextArea>
+        </HBox>
     </VBox>
-
-    <VBox >
-        <TextArea fx:id="taDetalhes" editable="false"/>
-    </VBox>
-
 </VBox>
