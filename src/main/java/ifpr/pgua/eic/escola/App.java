@@ -48,7 +48,8 @@ public class App extends BaseAppNavigator {
 
     @Override
     public void registrarTelas() {
-        registraTela("INICIAL", new ScreenRegistryFXML(App.class, "view/telaInicial.fxml", o -> new TelaInicial()));
+        registraTela("INICIAL", 
+                new ScreenRegistryFXML(App.class, "view/telaInicial.fxml", o -> new TelaInicial()));
         registraTela("PRINCIPAL_PROF",
                 new ScreenRegistryFXML(App.class, "view/professor/telaPrincipalProf.fxml", o -> new TelaPrincipalProf()));
         registraTela("CADASTRO_PROF",
@@ -73,6 +74,6 @@ public class App extends BaseAppNavigator {
 
     @Override
     public void atualizaEstilo() {
-        adicionarArquivoEstilo(getClass().getResource("style/estilo1.css").toExternalForm());
+        adicionarArquivoEstilo(getClass().getResource("style/style-principal.css").toExternalForm());
     }
 }

@@ -12,6 +12,7 @@
 <VBox xmlns="http://javafx.com/javafx" 
       xmlns:fx="http://javafx.com/fxml" 
       fx:controller="ifpr.pgua.eic.escola.controllers.professor.TelaCadastroProf"
+      styleClass="telaPrincipal"
       >
   
     <padding>
@@ -30,8 +31,8 @@
         <Label text="Salário: " />
         <TextField fx:id="campoSalario" />
         <HBox spacing="10">
-            <Button text="Cadastrar" onAction="#cadastrar"/>
-            <Button text="Limpar" onAction="#clear"/>
+            <Button styleClass="btn" text="Cadastrar" onAction="#cadastrar"/>
+            <Button styleClass="btn" text="Limpar" onAction="#clear"/>
         </HBox>
     </VBox>
 </VBox>

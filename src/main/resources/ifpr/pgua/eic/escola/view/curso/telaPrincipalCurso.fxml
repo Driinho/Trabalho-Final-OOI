@@ -13,18 +13,19 @@
       xmlns:fx="http://javafx.com/fxml" 
       prefHeight="600" prefWidth="800"
       fx:controller="ifpr.pgua.eic.escola.controllers.curso.TelaPrincipalCurso"
+      styleClass="telaPrincipal"
       >
 
     <left>
-        <VBox alignment="center">
-            <Button text="Cadastrar" onAction="#mudarTelaCadastro"/>
-            <Button text="Listar" onAction="#mudarTelaLista"/>
-            <Button text="Voltar" onAction="#mudarTelaInicial"/>
+        <VBox alignment="center" spacing="10">
+            <Button styleClass="btn" text="Cadastrar" onAction="#mudarTelaCadastro"/>
+            <Button styleClass="btn" text="Listar" onAction="#mudarTelaLista"/>
+            <Button styleClass="btn" text="Voltar" onAction="#mudarTelaInicial"/>
         </VBox>
     </left>
     <top>
         <HBox alignment="center">
-            <Label text="Curso" />
+            <Label styleClass="titulo" text="Curso" />
         </HBox>
     </top>
 

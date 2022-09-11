@@ -12,20 +12,21 @@
       xmlns:fx="http://javafx.com/fxml" 
       prefHeight="600" prefWidth="800"
       fx:controller="ifpr.pgua.eic.escola.controllers.aluno.TelaPrincipalAluno"
+      styleClass="telaPrincipal"
       >
 
     <left>
-        <VBox alignment="center">
-            <Button text="Cadastro" onAction="#mudarTelaCadastro"/>
-            <Button text="Lista" onAction="#mudarTelaLista"/>
-            <Button text="Matricula" onAction="#mudarTelaMatricula"/>
-            <Button text="Voltar" onAction="#mudarTelaInicio"/>
+        <VBox alignment="center" spacing="10">
+            <Button styleClass="btn" text="Cadastro" onAction="#mudarTelaCadastro"/>
+            <Button styleClass="btn" text="Lista" onAction="#mudarTelaLista"/>
+            <Button styleClass="btn" text="Matricula" onAction="#mudarTelaMatricula"/>
+            <Button styleClass="btn" text="Voltar" onAction="#mudarTelaInicio"/>
         </VBox>
     </left>
 
     <top>
         <HBox alignment="center">
-            <Label text="Aluno" />
+            <Label styleClass="titulo" text="Aluno" />
         </HBox>
     </top>
 

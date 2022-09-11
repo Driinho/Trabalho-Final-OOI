@@ -5,7 +5,7 @@ import ifpr.pgua.eic.escola.utils.BorderPaneRegion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public class TelaPrincipalAluno {
+public class TelaPrincipalAluno extends App {
 
     @FXML
     private void mudarTelaCadastro(ActionEvent event) {
@@ -25,5 +25,12 @@ public class TelaPrincipalAluno {
     @FXML
     private void mudarTelaInicio(ActionEvent event) {
         App.popScreen();
+        atualizaEstilo();
+    }
+
+    @Override
+    public void atualizaEstilo() {
+        removeArquivoEstilo(getClass().getResource("../../style/style-aux.css").toExternalForm());
+        adicionarArquivoEstilo(getClass().getResource("../../style/style-principal.css").toExternalForm());
     }
 }
