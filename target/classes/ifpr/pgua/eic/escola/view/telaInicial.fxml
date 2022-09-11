@@ -14,6 +14,7 @@
       prefHeight="600" prefWidth="800"
       fx:controller="ifpr.pgua.eic.escola.controllers.TelaInicial"
       alignment="center"
+      styleClass="telaPrincipal"
       >
 
         <padding>
@@ -22,10 +23,10 @@
 
         <Label text="Escola" />
 
-        <HBox alignment="center" spacing="10">
-            <Button text="Professores" onAction="#mudarTelaProf" />
-            <Button text="Cursos" onAction="#mudarTelaCurso"/>
-            <Button text="Alunos" onAction="#mudarTelaAluno" />
-        </HBox>
+        <VBox alignment="center" spacing="10">
+            <Button styleClass="btn" text="Professores" onAction="#mudarTelaProf" />
+            <Button styleClass="btn" text="Cursos" onAction="#mudarTelaCurso"/>
+            <Button styleClass="btn" text="Alunos" onAction="#mudarTelaAluno" />
+        </VBox>
     
 </VBox>

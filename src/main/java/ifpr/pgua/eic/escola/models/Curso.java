@@ -52,7 +52,7 @@ public class Curso {
     }
 
     public boolean desmatricula(String cpf) {
-        File novoArquivo = new File("src/main/resources/ifpr/pgua/eic/escola/arquivos/arquivoMatricula.txt");
+        File novoArquivo = new File("src/main/resources/ifpr/pgua/eic/escola/arquivos/novoArquivo.txt");
 
         try {
             Scanner leitor = new Scanner(arquivoMatricula);
@@ -68,13 +68,14 @@ public class Curso {
                 String cpfAluno = tokens[1];
                 if(nomeCurso.equals(nome) && cpfAluno.equals(cpf)) {
                     removido = true;
+                } else {
+                    bWriter.write(nomeCurso + ";" + cpfAluno);
+                    bWriter.newLine();
                 }
-                bWriter.write(nomeCurso + ";" + cpfAluno);
-                bWriter.newLine();
-
-                bWriter.close();
-                fWriter.close();
             }
+            
+            bWriter.close();
+            fWriter.close();
             leitor.close();
 
             arquivoMatricula.delete();

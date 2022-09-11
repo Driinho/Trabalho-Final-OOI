@@ -1,0 +1,12 @@
+.telaPrincipal {
+    -fx-background-color: blue;
+}
+
+.btn {
+    -fx-font-size: 24;
+    -fx-size: 35 100;
+}
+
+.btn:hover {
+    -fx-background-color: red;
+}

@@ -73,5 +73,6 @@ public class App extends BaseAppNavigator {
 
     @Override
     public void atualizaEstilo() {
+        adicionarArquivoEstilo(getClass().getResource("style/estilo1.css").toExternalForm());
     }
 }
