@@ -15,15 +15,15 @@
       styleClass="telaPrincipal"
       >
 
-    <left>
-        <VBox alignment="center" spacing="10">
+    <left >
+        <VBox styleClass="tela-esquerda" spacing="10">
             <Button styleClass="btn" text="Cadastrar" onAction="#mudarTelaCadastro"/>
             <Button styleClass="btn" text="Listar" onAction="#mudarTelaLista"/>
             <Button styleClass="btn" text="Voltar" onAction="#mudarTelaInicial"/>
         </VBox>
     </left>
     <top>
-        <HBox alignment="center">
+        <HBox styleClass="tela-topo" >
             <Label styleClass="titulo" text="Professor" />
         </HBox>
     </top>

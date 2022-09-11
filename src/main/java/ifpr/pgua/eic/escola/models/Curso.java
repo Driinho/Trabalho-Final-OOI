@@ -16,7 +16,7 @@ public class Curso {
     private Professor professor;
     private ArrayList<Aluno> alunos;
 
-    private File arquivoMatricula; 
+    private File arquivoMatricula;
 
     public Curso(int codigo, String nome, String descricao, int cargaHoraria, Professor professor) {
         this.codigo = codigo;
@@ -43,9 +43,9 @@ public class Curso {
             fWriter.close();
 
             alunos.add(aluno);
-            
+
             return true;
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return false;
@@ -60,28 +60,28 @@ public class Curso {
             BufferedWriter bWriter = new BufferedWriter(fWriter);
             boolean removido = false;
 
-            while(leitor.hasNextLine()) {
+            while (leitor.hasNextLine()) {
                 String linha = leitor.nextLine();
                 String[] tokens = linha.split(";");
 
                 String nomeCurso = tokens[0];
                 String cpfAluno = tokens[1];
-                if(nomeCurso.equals(nome) && cpfAluno.equals(cpf)) {
+                if (nomeCurso.equals(nome) && cpfAluno.equals(cpf)) {
                     removido = true;
                 } else {
                     bWriter.write(nomeCurso + ";" + cpfAluno);
                     bWriter.newLine();
                 }
             }
-            
+
             bWriter.close();
             fWriter.close();
             leitor.close();
 
             arquivoMatricula.delete();
             novoArquivo.renameTo(arquivoMatricula);
-            
-            if(removido == true) {
+
+            if (removido == true) {
                 return true;
             }
         } catch (IOException e) {

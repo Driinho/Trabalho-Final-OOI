@@ -14,11 +14,7 @@
       fx:controller="ifpr.pgua.eic.escola.controllers.aluno.TelaCadastroAluno"
       >
   
-    <padding>
-        <Insets topRightBottomLeft="20.0"/>
-    </padding>
-
-    <VBox>
+    <VBox styleClass="tela-cadastro">
         <Label text="Nome: " />
         <TextField fx:id="campoNome"/>
         <Label text="Cpf: " />
@@ -26,10 +22,12 @@
         <Label text="Email: " />
         <TextField fx:id="campoEmail" />
         <Label text="Telefone: " />
+        <VBox spacing="30">
         <TextField fx:id="campoTelefone" />
-        <HBox spacing="10">
-            <Button text="Cadastrar" onAction="#cadastrar"/>
-            <Button text="Limpar" onAction="#clear" />
-        </HBox>
+            <HBox spacing="10">
+                <Button styleClass="btn" text="Cadastrar" onAction="#cadastrar"/>
+                <Button styleClass="btn" text="Limpar" onAction="#clear" />
+            </HBox>
+        </VBox>
     </VBox>
 </VBox>

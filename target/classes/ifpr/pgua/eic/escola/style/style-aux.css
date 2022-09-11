@@ -2,6 +2,16 @@
     -fx-background-color: black;
 }
 
+.tela-esquerda {
+    -fx-pref-width: 400;
+    -fx-alignment: center;
+}
+
+.tela-topo {
+    -fx-pref-height: 200;
+    -fx-alignment: center;
+}
+
 .titulo {
     -fx-translate-y: 40;
     -fx-font-size: 90;
@@ -10,7 +20,6 @@
 }
 
 .btn {
-    -fx-translate-x: 30;
     -fx-background-color: black;
     -fx-background-radius: 20;
     -fx-font-size: 24;
@@ -23,4 +32,27 @@
 
 .btn:hover {
     -fx-background-color: rgb(78, 78, 78);
+}
+
+.tela-cadastro {
+    -fx-max-width: 900;
+    -fx-spacing: 10;
+    -fx-padding: 100 20 20 200;
+}
+
+.tela-cadastro .label {
+    -fx-font-size: 24;
+    -fx-text-fill: white;
+}
+
+.tela-cadastro .text-field {
+    -fx-background-radius: 20;
+    -fx-font-size: 24;
+}
+
+.tela-cadastro .combo-box {
+    -fx-font-size: 24;
+    -fx-pref-width: 200;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
 }

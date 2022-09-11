@@ -16,7 +16,7 @@
       >
 
     <left>
-        <VBox alignment="center" spacing="10">
+        <VBox styleClass="tela-esquerda" spacing="10">
             <Button styleClass="btn" text="Cadastro" onAction="#mudarTelaCadastro"/>
             <Button styleClass="btn" text="Lista" onAction="#mudarTelaLista"/>
             <Button styleClass="btn" text="Matricula" onAction="#mudarTelaMatricula"/>
@@ -25,7 +25,7 @@
     </left>
 
     <top>
-        <HBox alignment="center">
+        <HBox styleClass="tela-topo">
             <Label styleClass="titulo" text="Aluno" />
         </HBox>
     </top>

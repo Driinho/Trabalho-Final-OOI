@@ -13,12 +13,8 @@
       xmlns:fx="http://javafx.com/fxml" 
       fx:controller="ifpr.pgua.eic.escola.controllers.curso.TelaCadastroCurso"
       >
-  
-    <padding>
-        <Insets topRightBottomLeft="20.0"/>
-    </padding>
-
-    <VBox>
+      
+    <VBox styleClass="tela-cadastro">
         <Label text="Código: " />
         <TextField fx:id="campoCodigo" />
         <Label text="Nome: " />
@@ -28,10 +24,12 @@
         <Label text="Carga Horária: " />
         <TextField fx:id="campoCargaHoraria" />
         <Label text="Professor: " />
-        <ComboBox fx:id="comboProfessor" />
-        <HBox spacing="10">
-            <Button text="Cadastrar" onAction="#cadastrar"/>
-            <Button text="Limpar" onAction="#clear"/>
-        </HBox>
+        <VBox spacing="30">
+            <ComboBox fx:id="comboProfessor" />
+            <HBox spacing="10">
+                <Button styleClass="btn" text="Cadastrar" onAction="#cadastrar"/>
+                <Button styleClass="btn" text="Limpar" onAction="#clear"/>
+            </HBox>
+        </VBox>
     </VBox>
 </VBox>
