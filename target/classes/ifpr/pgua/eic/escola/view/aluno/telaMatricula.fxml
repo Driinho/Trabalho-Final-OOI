@@ -31,7 +31,7 @@
                 <Label text="" />
                 <Button styleClass="btn" text="Matricular" onAction="#matricularAluno" />
             </VBox>
-            <VBox alignment="center_right">
+            <VBox prefWidth="390" alignment="center_right">
                 <Label text=""/>
                 <Button styleClass="btn" fx:id="btnDesmatricula" text="Desmatricular" onAction="#desmatricula" opacity="0"/>
             </VBox>
