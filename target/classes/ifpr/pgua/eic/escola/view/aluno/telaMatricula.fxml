@@ -18,34 +18,37 @@
         <Insets topRightBottomLeft="20.0"/>
     </padding>
 
-    <VBox>
+    <VBox styleClass="tela-matricula">
         <Label text="Aluno: " />
         <ComboBox fx:id="cbAlunos" onAction="#populaTabela"/>
+
+        <HBox spacing="10">
+            <VBox>
+                <Label text="Curso: " />
+                <ComboBox fx:id="cbCursos"/>
+            </VBox>
+            <VBox>
+                <Label text="" />
+                <Button styleClass="btn" text="Matricular" onAction="#matricularAluno" />
+            </VBox>
+            <VBox alignment="center_right">
+                <Label text=""/>
+                <Button styleClass="btn" fx:id="btnDesmatricula" text="Desmatricular" onAction="#desmatricula" opacity="0"/>
+            </VBox>
+        </HBox>
     </VBox>
 
-    <HBox>
-        <VBox>
-            <Label text="Curso: " />
-            <ComboBox fx:id="cbCursos"/>
-        </VBox>
-        <VBox>
-            <Label text="" />
-            <Button text="Matricular" onAction="#matricularAluno" />
-        </VBox>
-    </HBox>
-
-    <VBox>
-        <Label text="Cursos Matriculados" />
+    <VBox styleClass="tela-lista-matricula">
+        <Label styleClass="subtitle" text="Cursos Matriculados" alignment="center"/>
         <TableView fx:id="tvCursosMatriculados" onMouseClicked="#apareceBotao">
             <columns>
-                <TableColumn text="Código" fx:id="codigoCurso" />
-                <TableColumn text="Nome" fx:id="nomeCurso" />
-                <TableColumn text="Descrição" fx:id="descricaoCurso" />
-                <TableColumn text="Carga Horária" fx:id="cargaHorariaCurso" />
-                <TableColumn text="Professor" fx:id="professorCurso" />
+                <TableColumn styleClass="tv-column" text="Código" fx:id="codigoCurso" />
+                <TableColumn styleClass="tv-column" text="Nome" fx:id="nomeCurso" />
+                <TableColumn styleClass="tv-column" text="Descrição" fx:id="descricaoCurso" />
+                <TableColumn styleClass="tv-column" text="Carga Horária" fx:id="cargaHorariaCurso" />
+                <TableColumn styleClass="tv-column" text="Professor" fx:id="professorCurso" />
             </columns>
         </TableView>
-        <Button fx:id="btnDesmatricula" text="Desmatricular" onAction="#desmatricula" opacity="0"/>
     </VBox>
 
 </VBox>

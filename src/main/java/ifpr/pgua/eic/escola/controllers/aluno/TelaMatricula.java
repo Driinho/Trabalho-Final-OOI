@@ -58,12 +58,12 @@ public class TelaMatricula implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
 
         cbAlunos.getItems().clear();
-        if(escola.listarAlunos() != null) {
+        if (escola.listarAlunos() != null) {
             cbAlunos.getItems().addAll(escola.listarAlunos());
         }
 
         cbCursos.getItems().clear();
-        if(escola.listarCursos() != null) {
+        if (escola.listarCursos() != null) {
             cbCursos.getItems().addAll(escola.listarCursos());
         }
 
@@ -80,10 +80,12 @@ public class TelaMatricula implements Initializable {
         ArrayList<Curso> cursosNaoMatriculados = new ArrayList<>();
 
         Aluno alunoSelecionado = cbAlunos.getValue();
-        
+
+        btnDesmatricula.setOpacity(0);
+
         for (Curso curso : escola.listarCursos()) {
             boolean matriculado = false;
-            if(escola.listarAlunosMatriculados(curso) != null) {
+            if (escola.listarAlunosMatriculados(curso) != null) {
                 for (Aluno aluno : escola.listarAlunosMatriculados(curso)) {
                     if (aluno.getCpf().equals(alunoSelecionado != null ? alunoSelecionado.getCpf() : "")) {
                         cursosMatriculados.add(curso);
@@ -95,7 +97,7 @@ public class TelaMatricula implements Initializable {
                 cursosNaoMatriculados.add(curso);
             }
         }
-        
+
         cbCursos.getItems().clear();
         cbCursos.getItems().addAll(cursosNaoMatriculados);
         tvCursosMatriculados.getItems().setAll(cursosMatriculados);
@@ -105,7 +107,7 @@ public class TelaMatricula implements Initializable {
     private void matricularAluno(ActionEvent event) {
         Aluno aluno = cbAlunos.getValue();
         Curso curso = cbCursos.getValue();
-        if(aluno != null && curso != null) {
+        if (aluno != null && curso != null) {
             if (escola.matricularAluno(aluno, curso)) {
                 Alert alert = new Alert(AlertType.INFORMATION, "ALUNO MATRICULADO!");
                 alert.showAndWait();
@@ -122,8 +124,8 @@ public class TelaMatricula implements Initializable {
         Aluno aluno = cbAlunos.getValue();
         Curso curso = tvCursosMatriculados.getSelectionModel().getSelectedItem();
 
-        if(curso != null) {
-            if(escola.desmatricular(aluno, curso)) {
+        if (curso != null) {
+            if (escola.desmatricular(aluno, curso)) {
                 Alert alert = new Alert(AlertType.INFORMATION, "ALUNO DESMATRICULADO!");
                 alert.showAndWait();
                 clear();
