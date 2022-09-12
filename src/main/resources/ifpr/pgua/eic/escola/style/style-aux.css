@@ -3,7 +3,7 @@
 }
 
 .tela-esquerda {
-    -fx-pref-width: 400;
+    -fx-pref-width: 300;
     -fx-alignment: center;
 }
 
@@ -60,7 +60,7 @@
 .tela-lista {
     -fx-max-width: 1100;
     -fx-spacing: 10;
-    -fx-padding: 100 20 20 200;
+    -fx-padding: 70 20 20 50;
 }
 
 .hbox-busca {

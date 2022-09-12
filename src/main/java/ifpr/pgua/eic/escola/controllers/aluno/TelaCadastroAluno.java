@@ -36,13 +36,18 @@ public class TelaCadastroAluno {
         String telefone = campoTelefone.getText();
         LocalDate dataMatricula = LocalDate.now();
 
-        if (escola.cadastrarAluno(cpf, nome, email, telefone, dataMatricula)) {
-            Alert alert = new Alert(AlertType.INFORMATION, "ALUNO CADASTRADO!");
+        if(nome.contains(";") || cpf.contains(";") || email.contains(";") || telefone.contains(";")) {
+            Alert alert = new Alert(AlertType.WARNING, "NENHUM CAMPO PODE CONTER [ ; ]");
             alert.showAndWait();
-            clear();
         } else {
-            Alert alert = new Alert(AlertType.ERROR, "ERRO PROFESSOR NÂO CADASTRADO!");
-            alert.showAndWait();
+            if (escola.cadastrarAluno(cpf, nome, email, telefone, dataMatricula)) {
+                Alert alert = new Alert(AlertType.INFORMATION, "ALUNO CADASTRADO!");
+                alert.showAndWait();
+                clear();
+            } else {
+                Alert alert = new Alert(AlertType.ERROR, "ERRO PROFESSOR NÂO CADASTRADO!");
+                alert.showAndWait();
+            }
         }
     }
 

@@ -37,21 +37,26 @@ public class TelaCadastroProf {
         String email = campoEmail.getText();
         String telefone = campoTelefone.getText();
         double salario;
-        try {
 
-            salario = Double.parseDouble(campoSalario.getText());
-            if (escola.cadastrarProfessor(cpf, nome, email, telefone, salario)) {
-                Alert alert = new Alert(AlertType.INFORMATION, "PROFESSOR CADASTRADO!");
-                alert.showAndWait();
-                clear();
-            } else {
-                Alert alert = new Alert(AlertType.ERROR, "ERRO PROFESSOR NÂO CADASTRADO!");
+        if(nome.contains(";") || cpf.contains(";") || email.contains(";") || telefone.contains(";")) {
+            Alert alert = new Alert(AlertType.WARNING, "NENHUM CAMPO PODE CONTER [ ; ]");
+            alert.showAndWait();
+        } else {
+            try {
+                salario = Double.parseDouble(campoSalario.getText());
+                if (escola.cadastrarProfessor(cpf, nome, email, telefone, salario)) {
+                    Alert alert = new Alert(AlertType.INFORMATION, "PROFESSOR CADASTRADO!");
+                    alert.showAndWait();
+                    clear();
+                } else {
+                    Alert alert = new Alert(AlertType.ERROR, "ERRO PROFESSOR NÂO CADASTRADO!");
+                    alert.showAndWait();
+                }
+    
+            } catch (NumberFormatException e) {
+                Alert alert = new Alert(AlertType.ERROR, "DIGITE UM NUMERO NO SALARIO!");
                 alert.showAndWait();
             }
-
-        } catch (NumberFormatException e) {
-            Alert alert = new Alert(AlertType.ERROR, "DIGITE UM NUMERO NO SALARIO!");
-            alert.showAndWait();
         }
     }
 

@@ -51,10 +51,15 @@ public class TelaCadastroCurso implements Initializable {
             int cargaHoraria = Integer.parseInt(campoCargaHoraria.getText());
             Professor professor = comboProfessor.getValue();
 
-            escola.cadastrarCurso(codigo, nome, descricao, cargaHoraria, professor);
-            clear();
-            Alert alert = new Alert(AlertType.INFORMATION, "Curso Cadastrado!!");
-            alert.showAndWait();
+            if(nome.contains(";") || descricao.contains(";")) {
+                Alert alert = new Alert(AlertType.WARNING, "NENHUM CAMPO PODE CONTER [ ; ]");
+                alert.showAndWait();
+            } else {
+                escola.cadastrarCurso(codigo, nome, descricao, cargaHoraria, professor);
+                clear();
+                Alert alert = new Alert(AlertType.INFORMATION, "Curso Cadastrado!!");
+                alert.showAndWait();
+            }
 
         } catch (NumberFormatException e) {
             Alert alert = new Alert(AlertType.ERROR, "O Código precisa ser um número!!");

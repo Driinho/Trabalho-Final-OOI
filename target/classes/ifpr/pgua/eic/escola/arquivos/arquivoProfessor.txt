@@ -1,4 +1,5 @@
 444-444;Hugo;hugo@gmail.com;444-444;1000000.0
 555-555;Gil;gil@gmail.com;555-555;1200.0
-666-666;Valério;valerio@gmail.com;666-666;1200.0
+666-666;Valï¿½rio;valerio@gmail.com;666-666;1200.0
 123-123;Diego Hoss;diego@gmail.com;123-123;1220.0
+321-456;Thiago;thiago@gmail.com;123-456;1220.0
