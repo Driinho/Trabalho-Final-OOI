@@ -18,14 +18,14 @@
         <Label text="Código: " />
         <TextField fx:id="campoCodigo" onMouseClicked="#limpaErro"/>
         <Label text="Nome: " />
-        <TextField fx:id="campoNome" />
+        <TextField fx:id="campoNome" onMouseClicked="#limpaErro"/>
         <Label text="Descrição: " />
-        <TextField fx:id="campoDescricao" />
+        <TextField fx:id="campoDescricao" onMouseClicked="#limpaErro"/>
         <Label text="Carga Horária: " />
-        <TextField fx:id="campoCargaHoraria" />
+        <TextField fx:id="campoCargaHoraria" onMouseClicked="#limpaErro"/>
         <Label text="Professor: " />
         <VBox spacing="30">
-            <ComboBox fx:id="comboProfessor" />
+            <ComboBox fx:id="comboProfessor" onMouseClicked="#limpaErro"/>
             <HBox spacing="10">
                 <Button styleClass="btn" text="Cadastrar" onAction="#cadastrar"/>
                 <Button styleClass="btn" text="Limpar" onAction="#clear"/>

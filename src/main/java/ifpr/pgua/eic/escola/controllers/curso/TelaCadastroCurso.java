@@ -5,7 +5,6 @@ import java.util.ResourceBundle;
 
 import ifpr.pgua.eic.escola.models.Escola;
 import ifpr.pgua.eic.escola.models.Professor;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -52,11 +51,11 @@ public class TelaCadastroCurso implements Initializable {
             String descricao = campoDescricao.getText();
             int cargaHoraria = Integer.parseInt(campoCargaHoraria.getText());
             Professor professor = comboProfessor.getValue();
-            if(!validaCamposVazios()) {
-                if(nome.contains(";") || descricao.contains(";")) {
+            if (!validaCamposVazios()) {
+                if (nome.contains(";") || descricao.contains(";")) {
                     Alert alert = new Alert(AlertType.WARNING, "NENHUM CAMPO PODE CONTER [ ; ]");
                     alert.showAndWait();
-                } else if(escola.cadastrarCurso(codigo, nome, descricao, cargaHoraria, professor)) {
+                } else if (escola.cadastrarCurso(codigo, nome, descricao, cargaHoraria, professor)) {
                     clear();
                     Alert alert = new Alert(AlertType.INFORMATION, "Curso Cadastrado!!");
                     alert.showAndWait();
@@ -65,7 +64,7 @@ public class TelaCadastroCurso implements Initializable {
                     alert.showAndWait();
                 }
             } else {
-                Alert alert = new Alert(AlertType.ERROR, "CAMPO VAZIO!!");
+                Alert alert = new Alert(AlertType.ERROR, "PREENCHA TODOS OS CAMPOS CORRETAMENTE!!");
                 alert.showAndWait();
             }
 
@@ -91,23 +90,23 @@ public class TelaCadastroCurso implements Initializable {
 
     private boolean validaCamposVazios() {
         boolean erro = false;
-        if(campoNome.getText().isBlank()) {
+        if (campoNome.getText().isBlank()) {
             erro = true;
             campoNome.getStyleClass().add("erro");
         }
-        if(campoCodigo.getText().isBlank()) {
+        if (campoCodigo.getText().isBlank()) {
             erro = true;
             campoCodigo.getStyleClass().add("erro");
         }
-        if(campoDescricao.getText().isBlank()) {
+        if (campoDescricao.getText().isBlank()) {
             erro = true;
             campoDescricao.getStyleClass().add("erro");
         }
-        if(campoCargaHoraria.getText().isBlank()) {
+        if (campoCargaHoraria.getText().isBlank()) {
             erro = true;
             campoCargaHoraria.getStyleClass().add("erro");
         }
-        if(comboProfessor.getSelectionModel().getSelectedItem() == null) {
+        if (comboProfessor.getSelectionModel().getSelectedItem() == null) {
             erro = true;
             comboProfessor.getStyleClass().add("erro");
         }

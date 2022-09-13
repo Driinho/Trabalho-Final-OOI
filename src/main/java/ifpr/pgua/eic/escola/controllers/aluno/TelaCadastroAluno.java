@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.MouseEvent;
 
 public class TelaCadastroAluno {
 
@@ -36,19 +37,53 @@ public class TelaCadastroAluno {
         String telefone = campoTelefone.getText();
         LocalDate dataMatricula = LocalDate.now();
 
-        if(nome.contains(";") || cpf.contains(";") || email.contains(";") || telefone.contains(";")) {
-            Alert alert = new Alert(AlertType.WARNING, "NENHUM CAMPO PODE CONTER [ ; ]");
-            alert.showAndWait();
-        } else {
-            if (escola.cadastrarAluno(cpf, nome, email, telefone, dataMatricula)) {
-                Alert alert = new Alert(AlertType.INFORMATION, "ALUNO CADASTRADO!");
+        if (!validaCamposVazios()) {
+            if (nome.contains(";") || cpf.contains(";") || email.contains(";") || telefone.contains(";")) {
+                Alert alert = new Alert(AlertType.WARNING, "NENHUM CAMPO PODE CONTER [ ; ]");
                 alert.showAndWait();
-                clear();
             } else {
-                Alert alert = new Alert(AlertType.ERROR, "ERRO PROFESSOR NÂO CADASTRADO!");
-                alert.showAndWait();
+                if (escola.cadastrarAluno(cpf, nome, email, telefone, dataMatricula)) {
+                    Alert alert = new Alert(AlertType.INFORMATION, "ALUNO CADASTRADO!");
+                    alert.showAndWait();
+                    clear();
+                } else {
+                    Alert alert = new Alert(AlertType.ERROR, "ERRO PROFESSOR NÂO CADASTRADO!");
+                    alert.showAndWait();
+                }
             }
+        } else {
+            Alert alert = new Alert(AlertType.ERROR, "PREENCHA TODOS OS CAMPOS CORRETAMENTE!!");
+            alert.showAndWait();
         }
+    }
+
+    @FXML
+    private void limpaErro(MouseEvent event) {
+        campoCpf.getStyleClass().remove("erro");
+        campoNome.getStyleClass().remove("erro");
+        campoEmail.getStyleClass().remove("erro");
+        campoTelefone.getStyleClass().remove("erro");
+    }
+
+    private boolean validaCamposVazios() {
+        boolean erro = false;
+        if (campoCpf.getText().isBlank()) {
+            erro = true;
+            campoCpf.getStyleClass().add("erro");
+        }
+        if (campoNome.getText().isBlank()) {
+            erro = true;
+            campoNome.getStyleClass().add("erro");
+        }
+        if (campoEmail.getText().isBlank()) {
+            erro = true;
+            campoEmail.getStyleClass().add("erro");
+        }
+        if (campoTelefone.getText().isBlank()) {
+            erro = true;
+            campoTelefone.getStyleClass().add("erro");
+        }
+        return erro;
     }
 
     @FXML

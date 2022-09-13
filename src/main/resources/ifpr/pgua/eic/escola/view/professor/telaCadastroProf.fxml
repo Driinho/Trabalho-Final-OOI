@@ -17,16 +17,16 @@
       
     <VBox styleClass="tela-cadastro" >
         <Label text="Nome: " />
-        <TextField fx:id="campoNome" />
+        <TextField fx:id="campoNome" onMouseClicked="#limpaErro"/>
         <Label text="Cpf: " />
-        <TextField fx:id="campoCpf" />
+        <TextField fx:id="campoCpf" onMouseClicked="#limpaErro"/>
         <Label text="Email: " />
-        <TextField fx:id="campoEmail" />
+        <TextField fx:id="campoEmail" onMouseClicked="#limpaErro"/>
         <Label text="Telefone: " />
-        <TextField fx:id="campoTelefone" />
+        <TextField fx:id="campoTelefone" onMouseClicked="#limpaErro"/>
         <Label text="Salário: " />
         <VBox spacing="30">
-            <TextField fx:id="campoSalario" />
+            <TextField fx:id="campoSalario" onMouseClicked="#limpaErro"/>
             <HBox spacing="10" alignment="center">
                 <Button styleClass="btn" text="Cadastrar" onAction="#cadastrar"/>
                 <Button styleClass="btn" text="Limpar" onAction="#clear"/>
