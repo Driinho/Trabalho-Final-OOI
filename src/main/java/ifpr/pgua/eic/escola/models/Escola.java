@@ -98,6 +98,13 @@ public class Escola {
 
     public boolean cadastrarCurso(int codigo, String nome, String descricao, int cargaHoraria, Professor professor) {
         if(buscarCurso(nome) == null) {
+            if(listarCursos() != null) {
+                for(Curso curso : listarCursos()) {
+                    if(curso.getCodigo() == codigo) {
+                        return false;
+                    }
+                }
+            }
             Curso curso = new Curso(codigo, nome, descricao, cargaHoraria, professor);
             try {
                 FileWriter fWriter = new FileWriter(arquivoCurso, true);

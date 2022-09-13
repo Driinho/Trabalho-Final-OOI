@@ -16,7 +16,7 @@
       
     <VBox styleClass="tela-cadastro">
         <Label text="Código: " />
-        <TextField fx:id="campoCodigo" />
+        <TextField fx:id="campoCodigo" onMouseClicked="#limpaErro"/>
         <Label text="Nome: " />
         <TextField fx:id="campoNome" />
         <Label text="Descrição: " />
