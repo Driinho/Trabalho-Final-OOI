@@ -1,2 +1,0 @@
-curso1;12
-curso2;76

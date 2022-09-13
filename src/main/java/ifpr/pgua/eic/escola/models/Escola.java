@@ -23,58 +23,47 @@ public class Escola {
         professores = new ArrayList<>();
         alunos = new ArrayList<>();
         cursos = new ArrayList<>();
-
-        criaFakes();
-    }
-
-    public void criaFakes() {
-        cadastrarAluno("111-111", "Pedro", "pedro@gmail.com", "111-111", LocalDate.now());
-        cadastrarAluno("222-222", "Gustavo", "gustavo@gmail.com", "222-222", LocalDate.now());
-        cadastrarAluno("333-333", "Andre", "andre@gmail.com", "333-333", LocalDate.now());
-
-        cadastrarProfessor("444-444", "Hugo", "hugo@gmail.com", "444-444", 1000000);
-        cadastrarProfessor("555-555", "Gil", "gil@gmail.com", "555-555", 1200);
-        cadastrarProfessor("666-666", "Valério", "valerio@gmail.com", "666-666", 1200);
-
-        Professor professor1 = new Professor("444-444", "Jorge", "hugo@gmail.com", "444-444", 1000000);
-        Professor professor2 = new Professor("555-555", "Gil", "gil@gmail.com", "555-555", 1200);
-        Professor professor3 = new Professor("666-666", "Valério", "valerio@gmail.com", "666-666", 1200);
-        cadastrarCurso(1, "Orientação a Objetos", "Melhor aula", 100, professor1);
-        cadastrarCurso(2, "Desenvolvimento Web", "Aula", 100, professor2);
-        cadastrarCurso(3, "Engenharia de Software", "Aula", 100, professor3);
     }
 
     public boolean cadastrarAluno(String cpf, String nome, String email, String telefone, LocalDate dataMatricula) {
-        for(Aluno aluno : alunos) {
-            if(!aluno.getCpf().equals(cpf)) {
-                alunos.add(new Aluno(cpf, nome, email, telefone, dataMatricula));
-                return true;
+        boolean existe = false;
+        for (Aluno aluno : alunos) {
+            if (aluno.getCpf().equals(cpf)) {
+                existe = true;
             }
+        }
+        if (existe == false) {
+            alunos.add(new Aluno(cpf, nome, email, telefone, dataMatricula));
+            return true;
         }
         return false;
     }
 
     public boolean cadastrarProfessor(String cpf, String nome, String email, String telefone, double salario) {
         boolean existe = false;
-        for(Professor professor : professores) {
-            if(professor.getCpf().equals(cpf)) {
+        for (Professor professor : professores) {
+            if (professor.getCpf().equals(cpf)) {
                 existe = true;
             }
         }
-        if(existe == false) {
+        if (existe == false) {
             professores.add(new Professor(cpf, nome, email, telefone, salario));
             return true;
         }
-
         return false;
-        
+
     }
 
     public boolean cadastrarCurso(int codigo, String nome, String descricao, int cargaHoraria, Professor professor) {
-        for(Curso curso : cursos) {
-            if(curso.getCodigo() == codigo) {
-                cursos.add(new Curso(codigo, nome, descricao, cargaHoraria, professor));
+        boolean existe = false;
+        for (Curso curso : cursos) {
+            if (curso.getCodigo() == codigo) {
+                existe = true;
             }
+        }
+        if (existe == false) {
+            cursos.add(new Curso(codigo, nome, descricao, cargaHoraria, professor));
+            return true;
         }
         return false;
     }
@@ -88,66 +77,59 @@ public class Escola {
     }
 
     public ArrayList<Aluno> listarAlunos() {
-        return null;
+        return alunos;
     }
 
     public ArrayList<Professor> listarProfessores() {
-        return null;
+        return professores;
     }
 
     public ArrayList<Curso> listarCursos() {
-        return null;
+        return cursos;
     }
 
     public ArrayList<Aluno> listarAlunosMatriculados(Curso curso) {
-        alunos.clear();
-        if(curso.getArquivoMatricula().exists()) {
-            try {
-                Scanner leitor = new Scanner(curso.getArquivoMatricula());
+        return curso.getAlunos();
+    }
 
-                while(leitor.hasNextLine()) {
-                    String linha = leitor.nextLine();
-                    String[] tokens = linha.split(";");
-
-                    String nomeCurso = tokens[0];
-                    String cpfAluno = tokens[1];
-
-                    if(nomeCurso.equals(curso.getNome())) {
-                        alunos.add(buscarAlunoCpf(cpfAluno));
-                    }
-                }
-                leitor.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+    public Aluno buscarAlunoCpf(String cpf) {
+        for (Aluno aluno : alunos) {
+            if (aluno.getCpf().equals(cpf)) {
+                return aluno;
             }
-            return alunos;
         }
         return null;
     }
 
-    public Aluno buscarAlunoCpf(String cpf) {
-        return null;
-    }
-
     public Professor buscarProfessorCpf(String cpf) {
+        for (Professor professor : professores) {
+            if (professor.getCpf().equals(cpf)) {
+                return professor;
+            }
+        }
         return null;
     }
 
     public Curso buscarCurso(String nome) {
+        for (Curso curso : cursos) {
+            if (curso.getNome().equals(nome)) {
+                return curso;
+            }
+        }
         return null;
     }
 
     public void carregaArquivoTexto(String nomeArquivo) {
-        
+
         File arquivoProfessor = new File("src/main/resources/ifpr/pgua/eic/escola/arquivos/arquivoProfessor.txt");
         File arquivoAluno = new File("src/main/resources/ifpr/pgua/eic/escola/arquivos/arquivoAluno.txt");
         File arquivoCurso = new File("src/main/resources/ifpr/pgua/eic/escola/arquivos/arquivoCurso.txt");
+        File arquivoMatricula = new File("src/main/resources/ifpr/pgua/eic/escola/arquivos/arquivoMatricula.txt");
 
-        if(arquivoProfessor.exists()) {
+        if (arquivoProfessor.exists()) {
             try {
                 Scanner leitor = new Scanner(arquivoProfessor);
-                professores.clear();
-                while(leitor.hasNextLine()) {
+                while (leitor.hasNextLine()) {
                     String linha = leitor.nextLine();
                     String[] tokens = linha.split(";");
 
@@ -157,18 +139,18 @@ public class Escola {
                     String telefoneProfessor = tokens[3];
                     double salarioProfessor = Double.parseDouble(tokens[4]);
 
-                    professores.add(new Professor(cpfProfessor, nomeProfessor, emailProfessor, telefoneProfessor, salarioProfessor));
+                    professores.add(new Professor(cpfProfessor, nomeProfessor, emailProfessor, telefoneProfessor,
+                            salarioProfessor));
                 }
                 leitor.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        if(arquivoAluno.exists()) {
+        if (arquivoAluno.exists()) {
             try {
                 Scanner leitor = new Scanner(arquivoAluno);
-                alunos.clear();
-                while(leitor.hasNextLine()) {
+                while (leitor.hasNextLine()) {
                     String linha = leitor.nextLine();
                     String[] tokens = linha.split(";");
 
@@ -191,11 +173,10 @@ public class Escola {
                 e.printStackTrace();
             }
         }
-        if(arquivoCurso.exists()) {
+        if (arquivoCurso.exists()) {
             try {
                 Scanner leitor = new Scanner(arquivoCurso);
-                cursos.clear();
-                while(leitor.hasNextLine()) {
+                while (leitor.hasNextLine()) {
                     String linha = leitor.nextLine();
                     String[] tokens = linha.split(";");
 
@@ -214,10 +195,92 @@ public class Escola {
                 e.printStackTrace();
             }
         }
+
+        if (arquivoMatricula.exists()) {
+            try {
+                Scanner leitor = new Scanner(arquivoMatricula);
+
+                while (leitor.hasNextLine()) {
+                    String linha = leitor.nextLine();
+                    String[] tokens = linha.split(";");
+
+                    String nomeCurso = tokens[0];
+                    String cpfAluno = tokens[1];
+
+                    Curso curso = buscarCurso(nomeCurso);
+                    Aluno aluno = buscarAlunoCpf(cpfAluno);
+                    curso.matricula(aluno);
+                }
+                leitor.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void salvarAquivoTexto(String nomeAquivo) {
-        
+        File arquivoProfessor = new File("src/main/resources/ifpr/pgua/eic/escola/arquivos/arquivoProfessor.txt");
+        File arquivoAluno = new File("src/main/resources/ifpr/pgua/eic/escola/arquivos/arquivoAluno.txt");
+        File arquivoCurso = new File("src/main/resources/ifpr/pgua/eic/escola/arquivos/arquivoCurso.txt");
+        File arquivoMatricula = new File("src/main/resources/ifpr/pgua/eic/escola/arquivos/arquivoMatricula.txt");
+
+        try {
+            FileWriter fWriter = new FileWriter(arquivoProfessor);
+            BufferedWriter bWriter = new BufferedWriter(fWriter);
+
+            for (Professor professor : professores) {
+                bWriter.write(professor.toText());
+                bWriter.newLine();
+            }
+            bWriter.close();
+            fWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FileWriter fWriter = new FileWriter(arquivoAluno);
+            BufferedWriter bWriter = new BufferedWriter(fWriter);
+
+            for (Aluno aluno : alunos) {
+                bWriter.write(aluno.toText());
+                bWriter.newLine();
+            }
+            bWriter.close();
+            fWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FileWriter fWriter = new FileWriter(arquivoCurso);
+            BufferedWriter bWriter = new BufferedWriter(fWriter);
+
+            for (Curso curso : cursos) {
+                bWriter.write(curso.toText());
+                bWriter.newLine();
+            }
+            bWriter.close();
+            fWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FileWriter fwriter = new FileWriter(arquivoMatricula);
+            BufferedWriter bwriter = new BufferedWriter(fwriter);
+
+            for (Curso curso : cursos) {
+                for (Aluno aluno : curso.getAlunos()) {
+                    bwriter.write(curso.getNome() + ";" + aluno.getCpf());
+                }
+            }
+
+            bwriter.close();
+            fwriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getNome() {

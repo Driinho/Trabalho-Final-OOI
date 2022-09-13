@@ -19,61 +19,78 @@ import ifpr.pgua.eic.escola.utils.ScreenRegistryFXML;
 
 public class App extends BaseAppNavigator {
 
-    private Escola escola;
-    File pasta;
+        private Escola escola;
+        File pasta;
 
-    public static void main(String[] args) {
-        launch();
-    }
-
-    @Override
-    public void init() throws Exception {
-        super.init();
-        pasta = new File("src/main/resources/ifpr/pgua/eic/escola/arquivos");
-        if(!pasta.exists()) {
-            pasta.mkdir();
+        public static void main(String[] args) {
+                launch();
         }
-        escola = new Escola("IFPR - CAMPUS PARANAGUÁ", "4002-8922");
-    }
 
-    @Override
-    public String getHome() {
-        return "INICIAL";
-    }
+        @Override
+        public void init() throws Exception {
+                super.init();
+                pasta = new File("src/main/resources/ifpr/pgua/eic/escola/arquivos");
+                if (!pasta.exists()) {
+                        pasta.mkdir();
+                }
+                escola = new Escola("IFPR - CAMPUS PARANAGUÁ", "4002-8922");
+                escola.carregaArquivoTexto("Arquivos");
+        }
 
-    @Override
-    public String getAppTitle() {
-        return "Escola";
-    }
+        @Override
+        public void stop() throws Exception {
+                super.stop();
+                escola.salvarAquivoTexto("Arquivo");
+        }
 
-    @Override
-    public void registrarTelas() {
-        registraTela("INICIAL", 
-                new ScreenRegistryFXML(App.class, "view/telaInicial.fxml", o -> new TelaInicial()));
-        registraTela("PRINCIPAL_PROF",
-                new ScreenRegistryFXML(App.class, "view/professor/telaPrincipalProf.fxml", o -> new TelaPrincipalProf()));
-        registraTela("CADASTRO_PROF",
-                new ScreenRegistryFXML(App.class, "view/professor/telaCadastroProf.fxml", o -> new TelaCadastroProf(escola)));
-        registraTela("LISTA_PROF",
-                new ScreenRegistryFXML(App.class, "view/professor/telaListaProf.fxml", o -> new TelaListaProf(escola)));
-        registraTela("PRINCIPAL_ALUNO",
-                new ScreenRegistryFXML(App.class, "view/aluno/telaPrincipalAluno.fxml", o -> new TelaPrincipalAluno()));
-        registraTela("CADASTRO_ALUNO",
-                new ScreenRegistryFXML(App.class, "view/aluno/telaCadastroAluno.fxml", o -> new TelaCadastroAluno(escola)));
-        registraTela("MATRICULA_ALUNO",
-                new ScreenRegistryFXML(App.class, "view/aluno/telaMatricula.fxml", o -> new TelaMatricula(escola)));
-        registraTela("LISTA_ALUNO",
-                new ScreenRegistryFXML(App.class, "view/aluno/telaListaAluno.fxml", o -> new TelaListaAluno(escola)));
-        registraTela("PRINCIPAL_CURSO", 
-                new ScreenRegistryFXML(App.class, "view/curso/telaPrincipalCurso.fxml", o -> new TelaPrincipalCurso()));
-        registraTela("CADASTRO_CURSO", 
-                new ScreenRegistryFXML(App.class, "view/curso/telaCadastroCurso.fxml", o -> new TelaCadastroCurso(escola)));
-        registraTela("LISTA_CURSO", 
-                new ScreenRegistryFXML(App.class, "view/curso/telaListaCurso.fxml", o -> new TelaListaCurso(escola)));
-    }
+        @Override
+        public String getHome() {
+                return "INICIAL";
+        }
 
-    @Override
-    public void atualizaEstilo() {
-        adicionarArquivoEstilo(getClass().getResource("style/style-principal.css").toExternalForm());
-    }
+        @Override
+        public String getAppTitle() {
+                return "Escola";
+        }
+
+        @Override
+        public void registrarTelas() {
+                registraTela("INICIAL",
+                                new ScreenRegistryFXML(App.class, "view/telaInicial.fxml", o -> new TelaInicial()));
+                registraTela("PRINCIPAL_PROF",
+                                new ScreenRegistryFXML(App.class, "view/professor/telaPrincipalProf.fxml",
+                                                o -> new TelaPrincipalProf()));
+                registraTela("CADASTRO_PROF",
+                                new ScreenRegistryFXML(App.class, "view/professor/telaCadastroProf.fxml",
+                                                o -> new TelaCadastroProf(escola)));
+                registraTela("LISTA_PROF",
+                                new ScreenRegistryFXML(App.class, "view/professor/telaListaProf.fxml",
+                                                o -> new TelaListaProf(escola)));
+                registraTela("PRINCIPAL_ALUNO",
+                                new ScreenRegistryFXML(App.class, "view/aluno/telaPrincipalAluno.fxml",
+                                                o -> new TelaPrincipalAluno()));
+                registraTela("CADASTRO_ALUNO",
+                                new ScreenRegistryFXML(App.class, "view/aluno/telaCadastroAluno.fxml",
+                                                o -> new TelaCadastroAluno(escola)));
+                registraTela("MATRICULA_ALUNO",
+                                new ScreenRegistryFXML(App.class, "view/aluno/telaMatricula.fxml",
+                                                o -> new TelaMatricula(escola)));
+                registraTela("LISTA_ALUNO",
+                                new ScreenRegistryFXML(App.class, "view/aluno/telaListaAluno.fxml",
+                                                o -> new TelaListaAluno(escola)));
+                registraTela("PRINCIPAL_CURSO",
+                                new ScreenRegistryFXML(App.class, "view/curso/telaPrincipalCurso.fxml",
+                                                o -> new TelaPrincipalCurso()));
+                registraTela("CADASTRO_CURSO",
+                                new ScreenRegistryFXML(App.class, "view/curso/telaCadastroCurso.fxml",
+                                                o -> new TelaCadastroCurso(escola)));
+                registraTela("LISTA_CURSO",
+                                new ScreenRegistryFXML(App.class, "view/curso/telaListaCurso.fxml",
+                                                o -> new TelaListaCurso(escola)));
+        }
+
+        @Override
+        public void atualizaEstilo() {
+                adicionarArquivoEstilo(getClass().getResource("style/style-principal.css").toExternalForm());
+        }
 }

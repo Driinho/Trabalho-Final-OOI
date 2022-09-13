@@ -4,7 +4,7 @@ import ifpr.pgua.eic.escola.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public class TelaInicial extends App{
+public class TelaInicial extends App {
 
     @FXML
     private void mudarTelaProf(ActionEvent event) {
@@ -14,8 +14,8 @@ public class TelaInicial extends App{
 
     @Override
     public void atualizaEstilo() {
-        removeArquivoEstilo(getClass().getResource("../style/style-principal.css").toExternalForm());
-        adicionarArquivoEstilo(getClass().getResource("../style/style-aux.css").toExternalForm());
+        // removeArquivoEstilo(getClass().getResource("../style/style-principal.css").toExternalForm());
+        // adicionarArquivoEstilo(getClass().getResource("../style/style-aux.css").toExternalForm());
     }
 
     @FXML

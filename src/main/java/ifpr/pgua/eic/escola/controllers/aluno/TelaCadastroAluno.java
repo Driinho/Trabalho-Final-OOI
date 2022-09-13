@@ -47,7 +47,7 @@ public class TelaCadastroAluno {
                     alert.showAndWait();
                     clear();
                 } else {
-                    Alert alert = new Alert(AlertType.ERROR, "ERRO PROFESSOR NÂO CADASTRADO!");
+                    Alert alert = new Alert(AlertType.ERROR, "ERRO ALUNO NÂO CADASTRADO!");
                     alert.showAndWait();
                 }
             }
