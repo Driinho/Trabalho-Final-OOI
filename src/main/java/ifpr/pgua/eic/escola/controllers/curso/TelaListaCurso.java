@@ -64,10 +64,12 @@ public class TelaListaCurso implements Initializable {
             taDetalhes.appendText("\nDescrição: " + curso.getDescricao());
             taDetalhes.appendText("\nCarga Horária: " + curso.getCargaHoraria());
             taDetalhes.appendText("\nProfessor: " + curso.getProfessor().getNome());
-            if (escola.listarAlunosMatriculados(curso).size() > 0) {
-                taDetalhes.appendText("\n------------------------------");
-                taDetalhes.appendText("\nAlunos Matriculados");
-                taDetalhes.appendText("\n" + escola.listarAlunosMatriculados(curso));
+            if(escola.listarAlunosMatriculados(curso) != null) {
+                if (escola.listarAlunosMatriculados(curso).size() > 0) {
+                    taDetalhes.appendText("\n------------------------------");
+                    taDetalhes.appendText("\nAlunos Matriculados");
+                    taDetalhes.appendText("\n" + escola.listarAlunosMatriculados(curso));
+                }
             }
         }
     }

@@ -1,3 +1,5 @@
-1;Orientação a Objetos;Melhor aula;100;444-444
+1;OrientaÃ§Ã£o a Objetos;Melhor aula;100;444-444
 2;Desenvolvimento Web;Aula;100;555-555
 3;Engenharia de Software;Aula;100;666-666
+123;curso1;curso1;12;1
+124;curso2;curso2;67;2
